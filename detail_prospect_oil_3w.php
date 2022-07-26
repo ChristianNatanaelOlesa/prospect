@@ -1,0 +1,781 @@
+<?php
+session_start();
+include_once("library/koneksi.php");
+include_once("library/koneksi2.php");
+include ("theme/header.php");
+$tgl = date("Y-m-d H:i:s");
+$id=$_GET['id'];
+
+$guk = mysqli_query($GLOBALS["___mysqli_ston"], "select * from oil_prospect where id ='$id' ");
+$gukDb = mysqli_fetch_assoc($guk);
+
+$no=$gukDb['noprospect'];
+$winding_position=trim($gukDb['winding_position']);
+
+$meong = mysqli_query($GLOBALS["___mysqli_ston"], "select * from h_rpospect where noprospect='$no' ");
+$meongDb = mysqli_fetch_assoc($meong);
+$sales= $meongDb['sales'];
+?>
+
+
+
+
+<!DOCTYPE html>
+<head>
+<title>Trafoindo</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <style>
+	h2 {
+	text-align: left;
+	}
+	h3 {
+	text-align: left;
+	}
+	</style>	
+	<script src="bootstrap/js/jquery.min.js"></script>
+	
+	
+	
+
+</head>
+
+
+<body onload="popi()"> 
+
+<ol class="breadcrumb">
+<li><a href="index_sales.php"><i class="fa fa-dashboard"></i> Home</a></li>
+<li><a href="index_sales.php?page=prospect">Prospect</a></li>
+<li class="active">Detail Prospect</li>  
+</ol>
+  
+
+<div class="box">
+	<div class="container">
+	<header>
+		<h2><strong> <font color="red">DETAIL PROSPECT OIL 3 WINDING SALES</font></strong></h2>	
+	</header>
+	</div>
+		
+		
+		
+		<div class="body">
+			<form action="" method="post" class="form-horizontal" name='orangtua'>
+			<div class="container">
+				<div class="form-group">
+							<label class="control-label col-lg-3">No Prospect </label>
+							<div class="col-lg-4">
+								<strong><input type="text" Readonly name="noprospect" autofocus required class="form-control" value="<?php echo $no; ?> "/></strong>
+							</div>	
+				</div>
+				<div class="form-group">
+							<label class="control-label col-lg-3">No Sub Prospect </label>
+							<div class="col-lg-4">
+								<strong><input type="text" Readonly name="nopracost" autofocus required class="form-control" value="<?php echo $gukDb['nopracost'];  ?> "/></strong>
+							</div>	
+				</div>
+				<div class="form-group">								
+							<label  class="control-label col-lg-3">Tahun Prospect</label> 
+							<div class="col-lg-4">								
+							<strong>	 <input type="text" readonly name="Tahun" autofocus required class="form-control" value="<?php echo $meongDb['tahun'];  ?>"/></strong>								  
+							</div>	
+				</div>			
+				<div class="form-group">	
+							<label class="control-label col-lg-3">Nama Sales</label>																					
+							<div class="col-lg-4">
+							<strong>	<input type="text" Readonly name="sales"  class="form-control" value= " <?php echo $sales; ?>  "/></strong>
+							</div>	
+				</div>
+				
+				<div class="form-group">	
+							<label class="control-label col-lg-3">Segmen Penjualan </label>
+							<div class="col-lg-4">
+							<strong>	<input type="text" Readonly name="segment" autofocus required class="form-control" value=<?php echo $meongDb['segment']; ?>  /> </strong>
+							</div>	
+				</div>
+				<div class="form-group">	
+							<label class="control-label col-lg-3">Sub Segmen Penjualan </label>
+							<div class="col-lg-4">															
+							<strong>	<input type="text" Readonly name="sub_segment" autofocus required class="form-control" value="<?php echo $meongDb['sub_segment']; ?> " />	</strong>
+							</div>	
+				</div>
+				
+				<div class="form-group">
+							<label class="control-label col-lg-3">Customer </label>
+							<div class="col-lg-4">
+							<strong>	<input type="text" name="customer" readonly required class="form-control" value="<?php echo $meongDb['customer']; ?> " /> </strong>
+							</div>	
+				</div>
+				
+				
+				<div class="form-group">								
+							<label class="control-label col-lg-3">Project</label>
+							<div class="col-lg-8">
+							<strong>	<input type="text" name="project" readonly class="form-control" value="<?php echo $meongDb['project']; ?> " /></strong>
+							</div>								
+				</div>
+				
+				<div class="form-group">						
+							<label class="control-label col-lg-3">Status Stage</label>
+							<div class="col-lg-4">															
+								<strong>	<input type="text" name="priority" readonly class="form-control" value="<?php echo $meongDb['priority']; ?> " /></strong>	
+							</div>							
+				</div>
+				</div>
+			<div class="container">
+			<h3><strong> <font color="blue">GENERAL CONDITION</font></strong></H3>
+			
+				<div class="form-group">
+							<label class="control-label col-lg-3">Catagory</label>
+								<div class="col-lg-4">															
+								<strong><input type="text" name="category" readonly class="form-control" value="<?php echo $gukDb['category']; ?> " /></strong>			
+								</div>	
+				</div>
+				<div class="form-group">				
+							<label class="control-label col-lg-3">Type of Transformer</label>
+								<div class="col-lg-4">			
+								<strong><input type="text" name="type_trafo" readonly class="form-control" value="<?php echo $gukDb['type_trafo']; ?> " /></strong>				
+								</div>			
+				</div>		
+				<div class="form-group">
+							<label class="control-label col-lg-3">Service Condition</label>
+								<div class="col-lg-4">															
+								<strong><input type="text" name="service_condition" readonly class="form-control" value="<?php echo $gukDb['service_condition']; ?> " /></strong>			
+								</div>	
+				</div>
+				<div class="form-group">
+							<label class="control-label col-lg-3">Altitude</label>
+								
+								<div class="col-lg-1">								
+								<strong><input type="text" name="altitude" readonly class="form-control" value="<?php echo $gukDb['altitude']; ?> " /></strong>			
+								</div>								
+				</div>
+				<div class="form-group">
+							<label class="control-label col-lg-3">Ambient Temp</label>																
+								<div class="col-lg-1">								
+								<strong><input type="text" name="ambient_temp" readonly class="form-control" value="<?php echo $gukDb['ambient_temp']; ?> " /></strong>			
+								</div>	
+								
+				</div>
+				<div class="form-group">
+							<label class="control-label col-lg-3">International Standard</label>	
+							<div class="col-lg-3">
+							<strong><input type="text" name="standarisasi" readonly class="form-control" value="<?php echo $gukDb['standarisasi']; ?> " /></strong>			
+							</div>	
+									
+				</div>				
+				</div>
+				
+				<div class="container">
+				<h3><font color="brown">ELECTRICAL CHARATERISTIC</font></H3>
+				
+				<div class="form-group">
+							<label class="control-label col-lg-3">Winding Temperature</label>
+								<div class="col-lg-3">													
+								<strong><input type="text" name="winding_temp" readonly class="form-control" value="<?php echo $gukDb['winding_temp']; ?> " /></strong>			
+								</div>
+				</div>
+				<div class="form-group">
+							<label class="control-label col-lg-3">Oil Temperature</label>
+								<div class="col-lg-3">													
+								<strong><input type="text" name="oil_temp" readonly class="form-control" value="<?php echo $gukDb['oil_temp']; ?> " /></strong>			
+								</div>
+				</div>
+				<div class="form-group">
+							<label class="control-label col-lg-3">Type of Cooling</label>
+								<div class="col-lg-3">															
+								<strong><input type="text" name="type_cooling" readonly class="form-control" value="<?php echo $gukDb['type_cooling']; ?> " /></strong>			
+								</div>
+				</div>			
+				
+				<div class="form-group">
+							<label class="control-label col-lg-3">Rate Capacity</label>
+								<div class="col-lg-2">
+								<strong><input type="text" name="rate_capacity" readonly class="form-control" value="<?php echo $gukDb['rate_capacity']; ?> " /></strong>			
+								</div>								
+								
+								<div class="col-lg-1">
+								<strong><input type="text" name="rate_capacityx2" readonly class="form-control" value="<?php echo $gukDb['type_cooling1']; ?> " /></strong>			
+								</div>	
+				</div>
+				<div class="form-group">
+							<label class="control-label col-lg-3"></label>
+								<div class="col-lg-2">
+								<strong><input type="text" name="rate_capacity" readonly class="form-control" value="<?php echo $gukDb['rate_capacity2']; ?> " /></strong>			
+								</div>	
+								<div class="col-lg-1">
+								<strong><input type="text" name="rate_capacityx2" readonly class="form-control" value="<?php echo $gukDb['type_cooling2']; ?> " /></strong>			
+								</div>	
+				</div>
+				<div class="form-group">
+							<label class="control-label col-lg-3">No Of Phase</label>
+								<div class="col-lg-3">															
+								<strong><input type="text" name="no_phase" readonly class="form-control" value="<?php echo $gukDb['no_phase']; ?> " /></strong>				
+								</div>	
+				</div>
+				<div class="form-group">
+							<label class="control-label col-lg-3">Frequency</label>								
+								<div class="col-lg-3">
+								<strong><input type="text" name=frequency" readonly class="form-control" value="<?php echo $gukDb['frequency']; ?> " /></strong>			
+								</div>	
+								
+				</div>
+				
+				<div class="form-group">
+							<label class="control-label col-lg-3">Double Winding Position</label>
+								<div class="col-lg-3">
+								<strong><input type="text" id="Boxon"  name="primary_voltage" readonly class="form-control" value="<?php echo $winding_position; ?> " /></strong>			
+								</div>	
+				</div>
+				
+				<div class="form-group" id="pv">
+							<label class="control-label col-lg-3">Primary Voltage</label>
+								<div class="col-lg-2">
+								<strong><input type="text" id="primary_voltage" name="primary_voltage" readonly class="form-control" value="<?php echo $gukDb['primary_voltage']; ?> " /></strong>			
+								</div>	
+				</div>
+					<div class="form-group" id="primary1">
+								<label class="control-label col-lg-3">Primary Voltage 1</label>
+								<div class="col-lg-2">
+								<strong><input type="text" id="primary_voltage1" name="primary_voltage1" readonly class="form-control" value="<?php echo $gukDb['primary_voltage1']; ?> " /></strong>			
+								</div>	
+								
+								<!--<label class="control-label col-lg-2">Capacity Primary 1</label>-->
+								<div class="col-lg-2">
+								<strong><input type="hidden" id="capacity_primary1" name="capacity_primary1" readonly class="form-control" value="<?php echo $gukDb['capacity_primary1']; ?> " /></strong>			
+								</div>	
+				</div>
+				<div class="form-group" id="primary2">
+							<label class="control-label col-lg-3">Primary Voltage 2</label>
+								<div class="col-lg-2">
+								<strong><input type="text" id="primary_voltage2" name="primary_voltage2" readonly class="form-control" value="<?php echo $gukDb['primary_voltage2']; ?> " /></strong>			
+								</div>
+								
+								<!--<label class="control-label col-lg-2">Capacity Primary 2</label>-->
+								<div class="col-lg-2">
+								<strong><input type="hidden" id="capacity_primary2" name="capacity_primary2" readonly class="form-control" value="<?php echo $gukDb['capacity_primary2']; ?> " /></strong>			
+								</div>
+				</div>
+				
+				<div class="form-group"id="sv">
+							<label class="control-label col-lg-3">Secondary Voltage&nbsp;</label>
+								<div class="col-lg-2">
+								<strong><input type="text" id="secondary_voltage" name="secondary_voltage" readonly class="form-control" value="<?php echo $gukDb['secondary_voltage']; ?> " /></strong>			
+								</div>	
+				</div>
+				<div class="form-group" id="secondary1">
+								<label class="control-label col-lg-3">Secondary Voltage 1</label>
+								<div class="col-lg-2">
+								<strong><input type="text" id="secondary_voltage1" name="secondary_voltage1" readonly class="form-control" value="<?php echo $gukDb['secondary_voltage1']; ?> " /></strong>			
+								</div>	
+								
+								<!--<label class="control-label col-lg-2">Capacity Secondary 1</label>-->
+								<div class="col-lg-2">
+								<strong><input type="hidden" id="capacity_secondary1" name="capacity_secondary1" readonly class="form-control" value="<?php echo $gukDb['capacity_secondary1']; ?> " /></strong>			
+								</div>	
+				</div>
+				
+				<div class="form-group" id="secondary2">
+							    <label class="control-label col-lg-3">Secondary Voltage 2</label>
+								<div class="col-lg-2">
+								<strong><input type="text" id="secondary_voltage2" name="secondary_voltage2" readonly class="form-control" value="<?php echo $gukDb['secondary_voltage2']; ?> " /></strong>			
+								</div>	
+								
+								<!--<label class="control-label col-lg-2">Capacity Secondary 2</label>-->
+								<div class="col-lg-2">
+								<strong><input type="hidden" id="capacity_secondary2" name="capacity_secondary2" readonly class="form-control" value="<?php echo $gukDb['capacity_secondary2']; ?> " /></strong>			
+								</div>	
+				</div>
+				<div class="form-group">
+							<label class="control-label col-lg-3">Vektor Group</label>								
+								<div class="col-lg-4">															
+								<strong><input type="text" name="vektor_group" readonly class="form-control" value="<?php echo $gukDb['vektor_group']; ?> " /></strong>												
+								</div>
+				</div>
+				<div class="form-group">
+							<label class="control-label col-lg-3">Type of Winding</label>
+								<div class="col-lg-4">															
+								<strong><input type="text" name="type_winding" readonly class="form-control" value="<?php echo $gukDb['type_winding']; ?> " /></strong>			
+								</div>
+				</div>
+			
+				<div class="form-group">
+							<label class="control-label col-lg-3">Tap Changer</label>
+								<div class="col-lg-4">															
+								<strong><input type="text" name="tap_changer" readonly class="form-control" value="<?php echo $gukDb['tap_changer']; ?> " /></strong>			
+								</div>
+				</div>
+				<div class="form-group">
+							<label class="control-label col-lg-3">No Of Tap</label>
+								<div class="col-lg-4">													
+								<strong><input type="text" name="no_tap" readonly class="form-control" value="<?php echo $gukDb['no_tap']; ?> " /></strong>			
+								</div>
+				</div>
+					<div class="form-group">
+							<label class="control-label col-lg-3">Type Of Oil</label>
+								<div class="col-lg-4">															
+								<strong><input type="text" name="type_oil" readonly class="form-control" value="<?php echo $gukDb['type_oil']; ?> " /></strong>			
+								</div>
+				</div>
+				</div>
+				
+			<div class="container">
+			<h3> <font color="blue">PROTECTION & ACCESORIES</font></H3>
+			
+			<div class="form-group">
+							<label class="control-label col-lg-3">Integrated Safety Device</label>
+								<div class="col-lg-3">
+								<strong><input type="text" name="safety_device" readonly class="form-control" value="<?php echo $gukDb['safety_device']; ?> " /></strong>											
+								</div>							
+			</div>
+			<div class="form-group">
+							<label class="control-label col-lg-3">Temperature Indicator</label>									
+									<div class="col-lg-3">
+									<strong><input type="text" name="temp_indicator" readonly class="form-control" value="<?php echo $gukDb['temp_indicator']; ?> " /></strong>										
+									</div>						
+													
+			</div>
+			<div class="form-group">
+							<label class="control-label col-lg-3">Oil Level Indicator</label>
+									<div class="col-lg-3">
+									<strong><input type="text" name="oil_indicator" readonly class="form-control" value="<?php echo $gukDb['oil_indicator']; ?> " /></strong>			
+									</div>
+			</div>
+			<div class="form-group">
+							<label class="control-label col-lg-3">Presure Device</label>
+									<div class="col-lg-3">
+									<strong><input type="text" name="presure_device" readonly class="form-control" value="<?php echo $gukDb['presure_device']; ?> " /></strong>										
+									</div>
+			</div>
+			<div class="form-group">
+							<label class="control-label col-lg-3">Winding Temperature Indicator</label>									
+									<div class="col-lg-3">
+									<strong><input type="text" name="winding_indicator" readonly class="form-control" value="<?php echo $gukDb['winding_indicator']; ?> " /></strong>			
+								    </div>
+			</div>
+			<div class="form-group">
+							<label class="control-label col-lg-3">Sudden Presure Relay</label>
+								<div class="col-lg-3">
+									<strong><input type="text" name="presure_relay" readonly class="form-control" value="<?php echo $gukDb['presure_relay']; ?> " /></strong>			
+								</div>
+			</div>
+			<div class="form-group">
+							<label class="control-label col-lg-3">Buccholz Relay</label>
+								<div class="col-lg-3">
+									<strong><input type="text" name="buccholz_relay" readonly class="form-control" value="<?php echo $gukDb['buccholz_relay']; ?> " /></strong>										
+								</div>
+			</div>
+			<div class="form-group">
+							<label class="control-label col-lg-3">Pressure Vacuum Gauge</label>								
+								<div class="col-lg-3">
+									<strong><input type="text" name="vacuum_gauge" readonly class="form-control" value="<?php echo $gukDb['vacuum_gauge']; ?> " /></strong>			
+								</div>
+			</div>
+			<div class="form-group">
+							<label class="control-label col-lg-3">HV/LV Cable Box</label>								
+								<div class="col-lg-3">
+									<strong><input type="text" name="enclosure" readonly class="form-control" value="<?php echo $gukDb['enclosure']; ?> " /></strong>										
+								</div>	
+				</div>				
+				</div>
+			
+			<div class="container">
+			<h3> <font color="blue">TRANSFORMER TESTING </font></H3>	
+				
+			<div class="form-group">
+				<label class="control-label col-lg-3"><font color="blue">SPECIAL TEST</font></label>
+			</div>	
+			<div class="form-group">
+							    <label class="control-label col-lg-3">DISSOLVE GASS ANALYSIS (DGA)</label>
+								<div class="col-lg-1">														
+								<strong><input type="text" name="sp_dga" readonly class="form-control" value="<?php echo $gukDb['sp_dga']; ?> " /></strong>	
+								</div>							
+			</div>
+			<div class="form-group">
+							<label class="control-label col-lg-3">SWEEP FREQUENCY RESPONSE (SFRA) </label>
+								<div class="col-lg-1">	
+								<strong><input type="text" name="sp_sfra" readonly class="form-control" value="<?php echo $gukDb['sp_sfra']; ?> " /></strong>
+								</div>							
+				</div>	
+				<div class="form-group">
+							<label class="control-label col-lg-3">DISSIPATION FACTOR (TAN DELTA) </label>
+									<div class="col-lg-1">	
+								<strong><input type="text" name="sp_delta" readonly class="form-control" value="<?php echo $gukDb['sp_delta']; ?> " /></strong>
+								</div>							
+				</div>	
+					<div class="form-group">
+							<label class="control-label col-lg-3">PARTIAL DISCHARGER </label>
+									<div class="col-lg-1">	
+								<strong><input type="text" name="sp_pd" readonly class="form-control" value="<?php echo $gukDb['sp_pd']; ?> " /></strong>
+								</div>							
+				</div>	
+						<div class="form-group">
+							<label class="control-label col-lg-3">ZERO SEQUENCE IMPEDANCE</label>
+								<div class="col-lg-1">	
+								<strong><input type="text" name="sp_zero" readonly class="form-control" value="<?php echo $gukDb['sp_zero']; ?> " /></strong>
+								</div>							
+				</div>	
+				<div class="form-group">
+				<label class="control-label col-lg-3"><font color="RED">TYPE TEST</font></label>
+			</DIV>			
+				<div class="form-group">
+							<label class="control-label col-lg-3">TEMPERATURE RISE</label>
+									<div class="col-lg-1">	
+								<strong><input type="text" name="test_temp_rise" readonly class="form-control" value="<?php echo $gukDb['test_temp_rise']; ?> " /></strong>
+								</div>						
+				</div>	
+				<div class="form-group">
+							<label class="control-label col-lg-3">LIGHTNING IMPULSE</label>
+								<div class="col-lg-1">	
+								<strong><input type="text" name="test_impulse" readonly class="form-control" value="<?php echo $gukDb['test_impulse']; ?> " /></strong>
+								</div>							
+				</div>	
+				<div class="form-group">
+							<label class="control-label col-lg-3">SOUND LEVEL(NOISE) </label>
+									<div class="col-lg-1">	
+								<strong><input type="text" name="test_noise" readonly class="form-control" value="<?php echo $gukDb['test_noise']; ?> " /></strong>
+								</div>							
+				</div>
+				</div>
+			<div class="container">	
+			<h3> <font color="blue">NOTES </font></H3>
+			
+			<div class="form-group">
+							<label class="control-label col-lg-3">Catatan 1</label>
+								<div class="col-lg-8">
+								<!-- <textarea  id ="notes1" name="notes1"  class="form-control" placeholder="Catatan" rows="4" cols="50" value="<?php echo $gukDb['notes1']; ?> "></textarea> -->
+								<strong><input type="text" name="notes1" readonly class="form-control" value="<?php echo $gukDb['notes1']; ?> " /></strong>
+								</div>	
+			</div>
+			<div class="form-group">
+							<label class="control-label col-lg-3">Catatan 2</label>
+								<div class="col-lg-8">
+								<!--<textarea  id ="notes2" name="notes2" class="form-control" placeholder="Catatan" rows="4" cols="50" ></textarea> -->
+								<strong><input type="text" name="notes2" readonly class="form-control" value="<?php echo $gukDb['notes2']; ?> " /></strong>
+							</div>	
+			</div>
+			<div class="form-group">
+							<label class="control-label col-lg-3">Catatan 3</label>
+								<div class="col-lg-8">
+								<!--<textarea  id ="notes3" name="notes3" class="form-control" placeholder="Catatan" rows="4" cols="50" ></textarea> -->
+								<strong><input type="text" name="notes3" readonly class="form-control" value="<?php echo $gukDb['notes3']; ?> " /></strong>
+								</div>	
+			</div>
+			</div>
+			<div class="container">
+			<div class="form-actions no-margin-bottom"  style="text-align:center;">
+		    <a href="menu_prospect.php?noprospect=<?php echo $no; ?>"  class="btn btn-primary" >&nbsp;&nbsp;&nbsp;&nbsp;Back&nbsp;&nbsp;&nbsp;</a>
+			</div>	
+			</div>
+			</br></br>
+					
+	</div>
+
+</body>
+</html>
+
+<script type="text/javascript">
+function popi()
+ {
+<!--var boba = document.getElementById("Boxon").value;
+var boba = "<?php echo $winding_position ?>";
+
+if (boba == 'Double Primary Winding')
+	{
+	$('#secondary1').hide();
+	$('#secondary2').hide();
+	$('#pv').hide();
+	$('#primary1').show();
+	$('#primary2').show();
+	$('#sv').show();
+	$('#pv').hide();
+	}
+else
+	
+	{
+	$('#secondary1').show();
+	$('#secondary2').show();
+	$('#primary1').hide();
+	$('#primary2').hide();
+	$('#pv').show();
+	$('#sv').hide();
+	}
+}
+</script>
+
+
+    
+    
+<script type="text/javascript">
+	$(document).ready(function(){
+      	$.ajax({
+            type: 'POST',
+          	url: "get_segment.php",
+          	cache: false, 
+          	success: function(msg){
+              $("#segment").html(msg);
+            }
+        });
+ 
+      	$("#segment").change(function(){
+      	var segment = $("#segment").val();
+          	$.ajax({
+          		type: 'POST',
+              	url: "get_sub_segment.php",
+              	data: {segment: segment},
+              	cache: false,
+              	success: function(msg){
+                  $("#sub_segment").html(msg);
+                }
+            });
+        });
+      });
+</script>
+
+<script type="text/javascript">
+function changeFunc() {
+var selectBox = document.getElementById("selectBox");
+var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+if (selectedValue=="other"){
+$('#textboxes').show();
+$('#textboxes').focus();
+}
+else {
+<!--alert("Error"); -->
+$('#textboxes').hide();
+}
+}
+</script>
+
+<script type="text/javascript">
+function changeFunction() {
+var selectBoxes = document.getElementById("selectBoxes");
+var selectedValues= selectBoxes.options[selectBoxes.selectedIndex].value;
+if (selectedValues=="other"){
+$('#textboxess').show();
+$('#textboxess').focus();
+}
+else {
+<!--alert("Error"); -->
+$('#textboxess').hide();
+}
+}
+</script>
+
+<script type="text/javascript">
+function changeFunctional() {
+var selectBoxes = document.getElementById("selectBoxal");
+var selectedValues= selectBoxes.options[selectBoxes.selectedIndex].value;
+
+var tes = document.getElementById("selectBoxal").value;
+		if (tes=="SPLN D3")
+		{ var tos = "50/55";
+		}
+		else if (tes=="ANSI / IEEE C57")
+		{ var tos = "50/55";
+		}
+		else if (tes=="IEC 60076")
+		{ var tos = "60/65";
+		}
+		else if (tes=="other")
+		{ var tos = "Other";
+		}
+        document.getElementById("temp_rise").value=tos;
+
+if (selectedValues=="other"){
+$('#textboxal').show();
+$('#textboxal').focus();
+<!--$('#textboxar').show();  -->
+
+
+}
+else {
+<!--alert("Error"); -->
+$('#textboxal').hide();
+$('#textboxar').hide();
+}
+}
+</script>
+
+<script type="text/javascript">
+function Fuckpop() {
+var selectBoxs = document.getElementById("selectBoxon");
+var selectedValues= selectBoxs.options[selectBoxs.selectedIndex].value;
+if (selectedValues=="Other"){
+$('#textboxon').show();
+$('#textboxon').focus();
+
+}
+else {
+<!--alert("Error"); -->
+$('#textboxon').hide();
+}
+}
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+      	$.ajax({
+            type: 'POST',
+          	url: "get_vektor_group.php",
+          	cache: false, 
+          	success: function(msg){
+              $("#vektor_group").html(msg);
+            }
+	})});
+</script>
+
+
+<script type="text/javascript">
+    $(function () {
+        $("#ddlModels").change(function () {
+            if ($(this).val() == "YES") {
+                $("#txtOther").removeAttr("disabled");
+				$("#txtOther").show();
+                $("#txtOther").focus();
+            } else {
+                $("#txtOther").attr("disabled", "disabled"); 
+				$("#txtOther").hide(); 
+				
+				
+            }
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#ddlModels1").change(function () {
+            if ($(this).val() == "YES") {
+                $("#txtOther1").removeAttr("disabled");
+				$("#txtOther1").show();
+                $("#txtOther1").focus();
+            } else {
+                $("#txtOther1").attr("disabled", "disabled"); 
+				$("#txtOther1").hide(); 				
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#ddlModels2").change(function () {
+            if ($(this).val() == "YES") {
+                $("#txtOther2").removeAttr("disabled");
+				$("#txtOther2").show();
+                $("#txtOther2").focus();
+            } else {
+                $("#txtOther2").attr("disabled", "disabled"); 
+				$("#txtOther2").hide(); 				
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#ddlModels3").change(function () {
+            if ($(this).val() == "YES") {
+                $("#txtOther3").removeAttr("disabled");
+				$("#txtOther3").show();
+                $("#txtOther3").focus();
+            } else {
+                $("#txtOther3").attr("disabled", "disabled"); 
+				$("#txtOther3").hide(); 				
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#ddlModels4").change(function () {
+            if ($(this).val() == "YES") {
+                $("#txtOther4").removeAttr("disabled");
+				$("#txtOther4").show();
+                $("#txtOther4").focus();
+            } else {
+                $("#txtOther4").attr("disabled", "disabled"); 
+				$("#txtOther4").hide(); 				
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#ddlModels5").change(function () {
+            if ($(this).val() == "YES") {
+                $("#txtOther5").removeAttr("disabled");
+				$("#txtOther5").show();
+                $("#txtOther5").focus();
+            } else {
+                $("#txtOther5").attr("disabled", "disabled"); 
+				$("#txtOther5").hide(); 				
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#ddlModels6").change(function () {
+            if ($(this).val() == "YES") {
+                $("#txtOther6").removeAttr("disabled");
+				$("#txtOther6").show();
+                $("#txtOther6").focus();
+            } else {
+                $("#txtOther6").attr("disabled", "disabled"); 
+				$("#txtOther6").hide(); 				
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#ddlModels7").change(function () {
+            if ($(this).val() == "YES") {
+                $("#txtOther7").removeAttr("disabled");
+				$("#txtOther7").show();
+                $("#txtOther7").focus();
+            } else {
+                $("#txtOther7").attr("disabled", "disabled"); 
+				$("#txtOther7").hide(); 				
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#ddlModels8").change(function () {
+            if ($(this).val() == "YES") {
+                $("#txtOther8").removeAttr("disabled");
+				$("#txtOther8").show();
+                $("#txtOther8").focus();
+            } else {
+                $("#txtOther8").attr("disabled", "disabled"); 
+				$("#txtOther8").hide(); 				
+            }
+        });
+    });
+</script>
+
+<script type="text/javascript">   
+    <?php echo $jsArray; ?> 
+    function changeValue(no_pasien){ 
+    document.getElementById('nm').value = dtMhs[no_pasien].nama; 
+    document.getElementById('jrsn').value = dtMhs[no_pasien].jrsn; 
+    }; 
+
+</script> 	
+
+
+
+	
+	
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4"></script>
+<script type="text/javascript" src="bootstrap/js/poper-min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script type="text/javascript" src="bootstrap/js/slim-min.js"integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>   
+<script src="bootstrap/js/jquery.min.js"></script>
+<script src="bootstrap/js/savy.min.js"></script>
+</body>
+</html>	
