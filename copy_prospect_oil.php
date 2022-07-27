@@ -34,39 +34,23 @@ if (isset($_POST["pasien"]))
 
 		// GENERAL CONDITION
 
-		$category="Non Standard";
+		$category			= "Non Standard";
+		$type_trafo 		= $_POST['type_trafo'];
+		$service_condition 	= $_POST['service_condition'];
 
-		if ($_POST['type_trafo_u'] == '') {
-			$type_trafo = $data_detail['type_trafo'];
-		} else {
-			$type_trafo = $_POST['type_trafo_u'];
-		}
-
-		if ($_POST['service_condition_u'] == '') {
-			$service_condition = $data_detail['service_condition'];
-		} else {
-			$service_condition = $_POST['service_condition_u'];
-		}
-
-		if ($_POST['altitude_u'] == '') {
-			$altitude = $data_detail['altitude'];
-		} else if ($_POST["altitude_master"]=="other")   {								
+		if ($_POST["altitude"]=="other")   {								
 			$altitude = $_POST["altitude_o"];
 		} else {
-			$altitude = '<1000';
+			$altitude = $_POST['altitude'];
 		}
 
-		if ($_POST['ambient_temp_u'] == '') {
-			$ambient_temp = $data_detail['ambient_temp'];
-		} else if ($_POST["ambient_temp_master"]=="other")   {								
+		if ($_POST["ambient_temp"]=="other")   {								
 			$ambient_temp = $_POST["ambient_temp_o"];
 		} else {
-			$ambient_temp = '<40';
+			$ambient_temp = $_POST['ambient_temp'];
 		}
 
-		if ($_POST['standarisasi_u'] == '') {
-			$standarisasi = $data_detail['standarisasi'];
-		} else if ($_POST["selectBoxal"]=="other")   {								
+		if ($_POST["selectBoxal"]=="other")   {								
 			$standarisasi = $_POST["standarisasi_o"];
 		} else {
 			$standarisasi = $_POST["selectBoxal"];
@@ -74,9 +58,7 @@ if (isset($_POST["pasien"]))
 
 		// ELECTRICAL CHARACTERISTIC
 
-		if ($_POST['winding_temp_u'] == '') {
-			$winding_temp = $data_detail['winding_temp'];
-		} else if ($_POST["winding_temp"]=="Other")   {								
+		if ($_POST["winding_temp"]=="Other")   {								
 			$winding_temp = $_POST["winding_temp2"];
 		} else if ($_POST["kustom_winding_temp"]<>"") {
 			$winding_temp = $_POST["kustom_winding_temp"];
@@ -84,9 +66,7 @@ if (isset($_POST["pasien"]))
 			$winding_temp = $_POST["winding_temp"];
 		}
 
-		if ($_POST['oil_temp_u'] == '') {
-			$oil_temp = $data_detail['oil_temp'];
-		} else if ($_POST["oil_temp"] == "Other")   {								
+		if ($_POST["oil_temp"] == "Other")   {								
 			$oil_temp = $_POST["oil_temp2"];
 		} else if ($_POST["kustom_oil_temp"] <> "") {
 			$oil_temp = $_POST["kustom_oil_temp"];
@@ -94,75 +74,54 @@ if (isset($_POST["pasien"]))
 			$oil_temp = $_POST["oil_temp"];
 		}
 
-		if ($_POST["type_cooling_u"] == "") {
-			$type_cooling = $data_detail["type_cooling"];
-			$type_cooling1 = $data_detail["type_cooling1"];
-			$type_cooling2 = $data_detail["type_cooling2"];
-			$rate_capacity = $data_detail['rate_capacity'];
-			$rate_capacity2 = $data_detail['rate_capacity2'];
-		} else if ($_POST["type_cooling_u"] == "ONAN"){
-			$type_cooling = $_POST["type_cooling_u"];
+		if ($_POST["type_cooling"] == "ONAN"){
+			$type_cooling = $_POST["type_cooling"];
 			$type_cooling1 = $_POST["type_cooling"];
 			$type_cooling2 = "";
 			$rate_capacity = $_POST['rate_capacity'];
 			$rate_capacity2 = "";
-		} else if ($_POST["type_cooling_u"] == "KNAN"){
-			$type_cooling = $_POST["type_cooling_u"];
+		} else if ($_POST["type_cooling"] == "KNAN"){
+			$type_cooling = $_POST["type_cooling"];
 			$type_cooling1 = $_POST["type_cooling"];
 			$type_cooling2 = "";
 			$rate_capacity = $_POST['rate_capacity'];
 			$rate_capacity2 = "";
-		} else if ($_POST["type_cooling_u"] == "ONAN/ONAF"){
-			$type_cooling = $_POST["type_cooling_u"];
+		} else if ($_POST["type_cooling"] == "ONAN/ONAF"){
+			$type_cooling = $_POST["type_cooling"];
 			$type_cooling1 = "ONAN";
 			$type_cooling2 = "ONAF";
 			$rate_capacity = $_POST['rate_capacity'];
 			$rate_capacity2 = $_POST['rate_capacity2'];
-		} else if ($_POST["type_cooling_u"] == "KNAN/KNAF"){
-			$type_cooling = $_POST["type_cooling_u"];
+		} else if ($_POST["type_cooling"] == "KNAN/KNAF"){
+			$type_cooling = $_POST["type_cooling"];
 			$type_cooling1 = "KNAN";
 			$type_cooling2 = "KNAF";
 			$rate_capacity = $_POST['rate_capacity'];
 			$rate_capacity2 = $_POST['rate_capacity2'];
-		} else if ($_POST["type_cooling_u"] == "OFAF"){
-			$type_cooling = $_POST["type_cooling_u"];
+		} else if ($_POST["type_cooling"] == "OFAF"){
+			$type_cooling = $_POST["type_cooling"];
 			$type_cooling1 = "OF";	
 			$type_cooling2 = "AF";
 			$rate_capacity = $_POST['rate_capacity'];
 			$rate_capacity2 = $_POST['rate_capacity2'];
-		} else if ($_POST["type_cooling_u"] == "KFAF"){
-			$type_cooling = $_POST["type_cooling_u"];
+		} else if ($_POST["type_cooling"] == "KFAF"){
+			$type_cooling = $_POST["type_cooling"];
 			$type_cooling1 = "KF";
 			$type_cooling2 = "AF";
 			$rate_capacity = $_POST['rate_capacity'];
 			$rate_capacity2 = $_POST['rate_capacity2'];
 		}
 
-		if ($_POST['no_phase_u'] == '') {
-			$no_phase = $data_detail['no_phase'];
-		} else {
-			$no_phase = $_POST['no_phase_u'];
-		}
+		$no_phase = $_POST['no_phase'];
 
-		if ($_POST['selectBoxon'] == '') {
-			$frequency = $data_detail['frequency'];
-		} else if ($_POST["selectBoxon"] == "Other")   {								
+		if ($_POST["selectBoxon"] == "Other")   {								
 			$frequency = $_POST["frequency_o"];
 		} else {
 			$frequency = $_POST["selectBoxon"];
 		}
 
-		if ($_POST['primary_voltage_u'] == '') {
-			$primary_voltage = $data_detail['primary_voltage'];
-		} else {
-			$primary_voltage = $_POST['primary_voltage_u'];
-		}
-
-		if ($_POST['secondary_voltage_u'] == '') {
-			$secondary_voltage = $data_detail['secondary_voltage'];
-		} else {
-			$secondary_voltage = $_POST['secondary_voltage_u'];
-		}
+		$primary_voltage = $_POST['primary_voltage'];
+		$secondary_voltage = $_POST['secondary_voltage'];
 
 		if ($_POST['vektor_group_u'] == '') {
 			$vektor_group = $data_detail['vektor_group'];
@@ -170,29 +129,10 @@ if (isset($_POST["pasien"]))
 			$vektor_group = $_POST['vektor_group_u'];
 		}
 
-		if ($_POST['type_winding_u'] == '') {
-			$type_winding = $data_detail['type_winding'];
-		} else {
-			$type_winding = $_POST['type_winding_u'];
-		}
-
-		if ($_POST['tap_changer_u'] == '') {
-			$tap_changer = $data_detail['tap_changer'];
-		} else {
-			$tap_changer = $_POST['tap_changer_u'];
-		}
-
-		if ($_POST['no_tap_u'] == '') {
-			$no_tap = $data_detail['no_tap'];
-		} else {
-			$no_tap = $_POST['no_tap_u'];
-		}
-
-		if ($_POST['type_oil_u'] == '') {
-			$type_oil = $data_detail['type_oil'];
-		} else {
-			$type_oil = $_POST['type_oil_u'];
-		}
+		$type_winding 	= $_POST['type_winding'];
+		$tap_changer 	= $_POST['tap_changer'];
+		$no_tap 		= $_POST['no_tap'];
+		$type_oil 		= $_POST['type_oil'];
 
 		// PROTECTION & ACCESORIES
 
@@ -270,77 +210,23 @@ if (isset($_POST["pasien"]))
 
 		// TRANSFORMER TESTING - SPECIAL TEST
 
-		if ($_POST['sp_dga_u'] == '') {
-			$sp_dga = $data_detail['sp_dga'];
-		} else {
-			$sp_dga = $_POST['sp_dga_u'];
-		}
-
-		if ($_POST['sp_sfra_u'] == '') {
-			$sp_sfra = $data_detail['sp_sfra'];
-		} else {
-			$sp_sfra = $_POST['sp_sfra_u'];
-		}
-
-		if ($_POST['sp_delta_u'] == '') {
-			$sp_delta = $data_detail['sp_delta'];
-		} else {
-			$sp_delta = $_POST['sp_delta_u'];
-		}
-
-		if ($_POST['sp_pd_u'] == '') {
-			$sp_pd = $data_detail['sp_pd'];
-		} else {
-			$sp_pd = $_POST['sp_pd_u'];
-		}
-
-		if ($_POST['sp_zero_u'] == '') {
-			$sp_zero = $data_detail['sp_zero'];
-		} else {
-			$sp_zero = $_POST['sp_zero_u'];
-		}
+		$sp_dga 	= $_POST['sp_dga'];
+		$sp_sfra 	= $_POST['sp_sfra'];
+		$sp_delta 	= $_POST['sp_delta'];
+		$sp_pd 		= $_POST['sp_pd'];
+		$sp_zero 	= $_POST['sp_zero'];
 
 		// TRANSFORMER TESTING - TYPE TEST
 
-		if ($_POST['test_temp_rise_u'] == '') {
-			$test_temp_rise = $data_detail['test_temp_rise'];
-		} else {
-			$test_temp_rise = $_POST['test_temp_rise_u'];
-		}
-
-		if ($_POST['test_impulse_u'] == '') {
-			$test_impulse = $data_detail['test_impulse'];
-		} else {
-			$test_impulse = $_POST['test_impulse_u'];
-		}
-
-		if ($_POST['test_noise_u'] == '') {
-			$test_noise = $data_detail['test_noise'];
-		} else {
-			$test_noise = $_POST['test_noise_u'];
-		}
+		$test_temp_rise = $_POST['test_temp_rise'];
+		$test_impulse 	= $_POST['test_impulse'];
+		$test_noise 	= $_POST['test_noise'];
 
 		//NOTES
 
-
-		if ($_POST['notes1_u'] == '') {
-			$notes1 = $data_detail['notes1'];
-		} else {
-			$notes1 = $_POST['notes1_u'];
-		}
-
-		if ($_POST['notes2_u'] == '') {
-			$notes2 = $data_detail['notes2'];
-		} else {
-			$notes2 = $_POST['notes2_u'];
-		}
-
-		if ($_POST['notes3_u'] == '') {
-			$notes3 = $data_detail['notes3'];
-		} else {
-			$notes3 = $_POST['notes3_u'];
-		}
-
+		$notes1 = $_POST['notes1'];
+		$notes2 = $_POST['notes2'];
+		$notes3 = $_POST['notes3'];
 		
 		mysqli_query($GLOBALS["___mysqli_ston"], "insert into oil_prospect set noprospect='$no', category='$category', type_trafo='$type_trafo', service_condition='$service_condition', altitude='$altitude', ambient_temp='$ambient_temp', standarisasi='$standarisasi',  winding_temp='$winding_temp', oil_temp='$oil_temp', type_cooling='$type_cooling', rate_capacity='$rate_capacity', rate_capacity2='$rate_capacity2', type_cooling1='$type_cooling1', type_cooling2='$type_cooling2', no_phase='$no_phase', frequency='$frequency', primary_voltage='$primary_voltage', secondary_voltage='$secondary_voltage', vektor_group='$vektor_group', type_winding='$type_winding',  tap_changer='$tap_changer', no_tap='$no_tap', type_oil='$type_oil', safety_device='$safety_device', temp_indicator='$temp_indicator', oil_indicator='$oil_indicator', presure_device='$presure_device', winding_indicator='$winding_indicator', presure_relay='$presure_relay', buccholz_relay='$buccholz_relay', vacuum_gauge='$vacuum_gauge', enclosure='$enclosure', sp_dga='$sp_dga', sp_sfra='$sp_sfra', sp_delta='$sp_delta', sp_pd='$sp_pd', sp_zero='$sp_zero', test_temp_rise='$test_temp_rise', test_impulse='$test_impulse', test_noise='$test_noise', notes1='$notes1', notes2='$notes2', notes3='$notes3', tipepracost='A', nopracost='$nopracost', tipeprospect='OIL'");
 			                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       			
@@ -472,9 +358,8 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">				
 				<label class="control-label col-lg-3">Type of Transformer</label>
 				<div class="col-lg-4">
-					<strong><input type="text" name="type_trafo" required class="form-control" value="<?php echo $data_detail['type_trafo'] ?>" readonly /></strong>
-					<select name='type_trafo_u' id = "type_trafo" autofocus class="form-control" >
-						<option value=''></option>
+					<select name='type_trafo' id = "type_trafo" autofocus class="form-control" >
+						<option value='<?php echo $data_detail['type_trafo'] ?>' selected="selected">-- <?php echo $data_detail['type_trafo'] ?> --</option>
 						<option value='Hermetically Sealed Type - Corrugated Radiator'>Hermetically Sealed Type - Corrugated Radiator</option>		
 						<option value='Conservator Type - Corrugated Radiator'>Conservator Type - Corrugated Radiator</option>	
 						<option value='Conservator Type - Panel Radiator'>Conservator Type - Panel Radiator</option>	
@@ -485,9 +370,8 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">
 				<label class="control-label col-lg-3">Service Condition</label>
 				<div class="col-lg-4">
-					<strong><input type="text" name="service_condition" required class="form-control" value="<?php echo $data_detail['service_condition'] ?>" readonly /></strong>
-					<select name='service_condition_u' id = "service_condition" autofocus class="form-control"  >
-						<option value=''></option>
+					<select name='service_condition' id = "service_condition" autofocus class="form-control"  >
+						<option value='<?php echo $data_detail['service_condition'] ?>' selected="selected">-- <?php echo $data_detail['service_condition'] ?> --</option>
 						<option value='Outdoor'>Outdoor</option>		
 						<option value='Indoor'>Indoor</option>								
 					</select>	
@@ -496,38 +380,34 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">
 				<label class="control-label col-lg-3">Altitude</label>
 				<div class="col-lg-3">
-					<strong><input type="text" name="altitude" required class="form-control" value="<?php echo $data_detail['altitude'] ?>" readonly /></strong>
-					<select name="altitude_master" id="selectBox" onchange="changeFunc();"class="form-control">
-						<option value=''></option>
-						<option value="Standard">Standard &nbsp;&lt&nbsp;1000</option>								
+					<select name="altitude" id="selectBox" onchange="changeFunc();"class="form-control">
+						<option value='<?php echo $data_detail['altitude'] ?>' selected="selected">-- <?php echo $data_detail['altitude'] ?> --</option>
+						<option value="<1000">Standard &nbsp;&lt&nbsp;1000</option>								
 						<option value="other">Other</option>
 					</select>
 				</div> 
 				<div class="col-lg-1">
-					<input name="altitude"  placeholder="Mdpl" class="form-control" type="text" style="display: none" id="textboxes">
+					<input name="altitude_o"  placeholder="Mdpl" class="form-control" type="text" style="display: none" id="textboxes">
 				</div>								
 			</div>
 			<div class="form-group">
 				<label class="control-label col-lg-3">Ambient Temp</label>	
 				<div class="col-lg-3">
-					<strong><input type="text" name="ambient_temp" required class="form-control" value="<?php echo $data_detail['ambient_temp'] ?>" readonly /></strong>
-					<select name="ambient_temp_master" id="selectBoxes" onchange="changeFunction();"class="form-control" >
-						<option value=''></option>
-						<option value="Standard">Standard&nbsp;&lt&nbsp;40&deg;&nbsp;C</option>
+					<select name="ambient_temp" id="selectBoxes" onchange="changeFunction();"class="form-control" >
+						<option value='<?php echo $data_detail['ambient_temp'] ?>' selected="selected">-- <?php echo $data_detail['ambient_temp'] ?> --</option>
+						<option value="<40">Standard&nbsp;&lt&nbsp;40&deg;&nbsp;C</option>
 						<option value="other">Other</option>
 					</select>
 				</div> 
 				<div class="col-lg-1">
-					<input name="ambient_temp"  placeholder="Celcius" class="form-control" type="text" style="display: none" id="textboxess">
+					<input name="ambient_temp_o"  placeholder="Celcius" class="form-control" type="text" style="display: none" id="textboxess">
 				</div>	
-							
 			</div>
 			<div class="form-group">
 				<label class="control-label col-lg-3">International Standard</label>	
 				<div class="col-lg-3">
-					<strong><input type="text" name="standarisasi" required class="form-control" value="<?php echo $data_detail['standarisasi'] ?>" readonly /></strong>
 					<select id="selectBoxal" name="selectBoxal" onchange="changeFunctional();"class="form-control" >
-						<option value=''></option>
+						<option value='<?php echo $data_detail['standarisasi'] ?>' selected="selected">-- <?php echo $data_detail['standarisasi'] ?> --</option>
 						<option value='IEC 60076'>IEC 60076</option>		
 						<option value='SPLN D3'>SPLN D3</option>	
 						<option value='ANSI / IEEE C57'>ANSI / IEEE C57</option>								
@@ -547,8 +427,10 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">
 				<label class="control-label col-lg-3">Winding Temperature</label>
 				<div class="col-lg-1">
-					<strong><input type="text"  name="winding_temp" value="<?php echo $data_detail['winding_temp'] ?>" autofocus required class="form-control" readonly /></strong>
-					<input type="text"  id="winding_temp"  name="winding_temp_u" autofocus class="form-control" readonly />
+					<strong><input type="text"  id="winding_temp"  name="winding_temp" value="<?php echo $data_detail['winding_temp'] ?>" autofocus class="form-control" readonly /></strong>
+				</div>
+				<div class="col-lg-1">
+					<span class="form-control" style="color: RED; background-color: white;"><strong>Celcius</strong></span>
 				</div>
 				<div class="col-lg-1">
 					<input name="winding_temp2"  placeholder="Please Write" class="form-control" type="text" style="display: none" id="textboxal1">
@@ -565,8 +447,10 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">
 				<label class="control-label col-lg-3">Oil Temperature</label>
 				<div class="col-lg-1">	
-					<strong><input type="text"  name="oil_temp" value="<?php echo $data_detail['oil_temp'] ?>" autofocus required class="form-control" readonly /></strong>
-					<input type="text"  id="oil_temp"  name="oil_temp_u" autofocus class="form-control" readonly />
+					<strong><input type="text"  id="oil_temp"  name="oil_temp" value="<?php echo $data_detail['oil_temp'] ?>"  autofocus class="form-control" readonly /></strong>
+				</div>
+				<div class="col-lg-1">
+					<span class="form-control" style="color: RED; background-color: white;"><strong>Celcius</strong></span>
 				</div>
 				<div class="col-lg-1">
 					<input name="oil_temp2"  placeholder="Please Write" class="form-control" type="text" style="display: none" id="textboxal2">
@@ -578,15 +462,13 @@ if (isset($_POST["pasien"]))
 				<div class="col-lg-1" id="dvPassport91" style="display: none">	
 					<input type="text"  id="kustom_oil_temp" name="kustom_oil_temp"  autofocus class="form-control" placeholder = "Ubah "/>
 				</div>
-								
 			</div>	
 			
 			<div class="form-group">
 				<label class="control-label col-lg-3">Type of Cooling</label>
 				<div class="col-lg-4">
-					<input type="text" name="type_cooling" value="<?php echo $data_detail['type_cooling'] ?>" autofocus required class="form-control" readonly />
-					<select name='type_cooling_u' id = "type_cooling" onchange="somay();"  autofocus class="form-control"  >
-						<option value=''></option>
+					<select name='type_cooling' id = "type_cooling" onchange="somay();"  autofocus class="form-control"  >
+						<option value='<?php echo $data_detail['type_cooling'] ?>' selected="selected">-- <?php echo $data_detail['type_cooling'] ?> --</option>
 						<option value='ONAN'>ONAN</option>	
 						<option value='ONAN/ONAF'>ONAN/ONAF</option>
 						<option value='KNAN'>KNAN</option>	
@@ -602,8 +484,11 @@ if (isset($_POST["pasien"]))
 				<div class="col-lg-2">								
 					<input type="number" min="1" name="rate_capacity" value="<?php echo $data_detail['rate_capacity']; ?>" autofocus class="form-control" placeholder="KVA" />
 				</div>
-				<div class="col-lg-2">								
+				<div class="col-lg-1">								
 					<input type="text"  id="duadua" class="form-control" placeholder="KVA" value="<?php echo $data_detail['type_cooling1']; ?>" readonly>
+				</div>
+				<div class="col-lg-1">
+					<span class="form-control" style="color: RED; background-color: white;"><strong>KVA</strong></span>
 				</div>
 			</div>		
 			<div class="form-group">
@@ -616,32 +501,36 @@ if (isset($_POST["pasien"]))
 					<input type="number" min="1" name="rate_capacity2" id="rc2" value="<?php echo $data_detail['rate_capacity2']; ?>" autofocus  class="form-control" placeholder="KVA" style="display: none"  />
 				<?php } ?>
 				</div>
-				<div class="col-lg-2">
+				<div class="col-lg-1">
 				<?php if ($data_detail['type_cooling'] == 'ONAN/ONAF' || $data_detail['type_cooling'] == 'KNAN/KNAF' || $data_detail['type_cooling'] == 'AFAF' || $data_detail['type_cooling'] == 'OFAF') { ?>							
 					<input type="text"  id="tigatiga" class="form-control" placeholder="KVA" value="<?php echo $data_detail['type_cooling2']; ?>" readonly>
 				<?php } else { ?>
 					<input type="text"  id="tigatiga" class="form-control" placeholder="KVA" value="<?php echo $data_detail['type_cooling2']; ?>" style="display: none" readonly>
 				<?php } ?>
 				</div>
+				<div class="col-lg-1" id="dv_kva1">
+					<span class="form-control" style="color: RED; background-color: white;"><strong>KVA</strong></span>
+				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="control-label col-lg-3">No Of Phase</label>
-				<div class="col-lg-4">
-					<input type="text" name="no_phase" value="<?php echo $data_detail['no_phase'] ?>" autofocus required class="form-control" readonly />
-					<select name='no_phase_u' id = "no_phase" autofocus class="form-control"  >
-						<option value=''></option>
+				<div class="col-lg-3">
+					<select name='no_phase' id = "no_phase" autofocus class="form-control"  >
+						<option value='<?php echo $data_detail['no_phase'] ?>' selected="selected">-- <?php echo $data_detail['no_phase'] ?> --</option>
 						<option value='1'>1 (Single) </option>		
 						<option value='3'>3 (Three) </option>														
 					</select>	
-				</div>	
+				</div>
+				<div class="col-lg-1">
+					<span class="form-control" style="color: RED; background-color: white;"><strong>Phase</strong></span>
+				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-lg-3">Frequency</label>
-				<div class="col-lg-3">
-					<input type="text" name="frequency" value="<?php echo $data_detail['frequency'] ?>" autofocus required class="form-control" readonly />
+				<div class="col-lg-2">
 					<select id="selectBoxon" name="selectBoxon" onchange="Fuckpop();"class="form-control" >
-						<option value=''></option>
+						<option value='<?php echo $data_detail['frequency'] ?>' selected="selected">-- <?php echo $data_detail['frequency'] ?> --</option>
 						<option value="50">50 Hz</option>	
 						<option value="60">60 Hz</option>									
 						<option value="Other">Other</option>
@@ -649,27 +538,34 @@ if (isset($_POST["pasien"]))
 				</div> 
 				<div class="col-lg-1">
 					<input name="frequency_o" class="form-control" type="text" style="display: none" id="textboxon" placeholder="Hz" />
-				</div>	
+				</div>
+				<div class="col-lg-1">
+					<span class="form-control" style="color: RED; background-color: white;"><strong>Hz</strong></span>
+				</div>
 			</div>
 			
 			<div class="form-group">
 				<label class="control-label col-lg-3">Primary Voltage</label>
-				<div class="col-lg-4">
-					<input type="text" name="primary_voltage" value="<?php echo $data_detail['primary_voltage'] ?>" autofocus required class="form-control" readonly />
-					<input type="number" min="1" name="primary_voltage_u" autofocus class="form-control" placeholder="Volt" />
-				</div>	
+				<div class="col-lg-3">
+					<input type="number" min="1" name="primary_voltage" value="<?php echo $data_detail['primary_voltage'] ?>" autofocus required class="form-control" placeholder="Volt" />
+				</div>
+				<div class="col-lg-1">
+					<span class="form-control" style="color: RED; background-color: white;"><strong>Volt</strong></span>
+				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-lg-3">Secondary Voltage&nbsp</label>
-				<div class="col-lg-4">
-					<input type="text" name="secondary_voltage" value="<?php echo $data_detail['secondary_voltage'] ?>" autofocus required class="form-control" readonly />
-					<input type="number"  min="1" name="secondary_voltage_u" autofocus class="form-control" placeholder="Volt" />
-				</div>	
+				<div class="col-lg-3">
+					<input type="number" min="1" name="secondary_voltage" value="<?php echo $data_detail['secondary_voltage'] ?>" autofocus required class="form-control" placeholder="Volt" />
+				</div>
+				<div class="col-lg-1">
+					<span class="form-control" style="color: RED; background-color: white;"><strong>Volt</strong></span>
+				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-lg-3">Vektor Group</label>								
 				<div class="col-lg-4">
-					<input type="text" name="vektor_group" value="<?php echo $data_detail['vektor_group'] ?>" autofocus required class="form-control" readonly />
+					<input type="text" value="<?php echo $data_detail['vektor_group'] ?>" autofocus required class="form-control" readonly />
 					<select name='vektor_group_u' id = "vektor_group" autofocus class="form-control"  >
 						<option value=''></option>	
 					</select>									
@@ -678,9 +574,8 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">
 				<label class="control-label col-lg-3">Type of Winding</label>
 				<div class="col-lg-4">
-					<input type="text" name="type_winding" value="<?php echo $data_detail['type_winding'] ?>" autofocus required class="form-control" readonly />
-					<select name='type_winding_u' id = "type_winding" autofocus class="form-control"  >
-						<option value=''></option>
+					<select name='type_winding' id = "type_winding" autofocus class="form-control"  >
+						<option value='<?php echo $data_detail['type_winding'] ?>' selected="selected">-- <?php echo $data_detail['type_winding'] ?> --</option>
 						<option value='Cu-Cu'>Cu-Cu</option>	
 						<option value='Cu-Al'>Cu-Al</option>
 						<option value='Al-Al'>Al-Al</option>	
@@ -691,9 +586,8 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">
 				<label class="control-label col-lg-3">Tap Changer</label>
 				<div class="col-lg-4">
-					<input type="text" name="tap_changer" value="<?php echo $data_detail['tap_changer'] ?>" autofocus required class="form-control" readonly />
-					<select name='tap_changer_u' id = "tap_changer" autofocus class="form-control"  >
-						<option value=''></option>
+					<select name='tap_changer' id = "tap_changer" autofocus class="form-control"  >
+						<option value='<?php echo $data_detail['tap_changer'] ?>' selected="selected">-- <?php echo $data_detail['tap_changer'] ?> --</option>
 						<option value='Off Load Tap Changer'>Off Load Tap Changer</option>	
 						<option value='On Load Tap Changer'>On Load Tap Changer</option>
 						<option value='No Tapping'>No Tapping</option>	
@@ -703,16 +597,14 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">
 				<label class="control-label col-lg-3">No Of Tap</label>
 				<div class="col-lg-4">
-					<input type="text" name="no_tap" value="<?php echo $data_detail['no_tap'] ?>" autofocus required class="form-control" readonly />
-					<input type="number" min="1" name="no_tap_u" id="txt_no_tap" autofocus class="form-control" placeholder="No Of Tap" />
+					<input type="number" min="1" name="no_tap" id="txt_no_tap" value="<?php echo $data_detail['no_tap'] ?>" autofocus class="form-control" placeholder="No Of Tap" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-lg-3">Type Of Oil</label>
 				<div class="col-lg-4">
-					<input type="text" name="type_oil" value="<?php echo $data_detail['type_oil'] ?>" autofocus required class="form-control" readonly />
-					<select name='type_oil_u' id = "type_oil" autofocus class="form-control"  >
-						<option value=''></option>
+					<select name='type_oil' id = "type_oil" autofocus class="form-control"  >
+						<option value='<?php echo $data_detail['type_oil'] ?>' selected="selected">-- <?php echo $data_detail['type_oil'] ?> --</option>
 						<option value='Mineral Oil'>Mineral Oil</option>	
 						<option value='Silicone Oil'>Silicone Oil</option>	
 						<option value='Synthetic Ester'>Synthetic Ester</option>	
@@ -735,9 +627,8 @@ if (isset($_POST["pasien"]))
 					</select>
 				</div> 
 				<div class="col-lg-3">
-					<input type="text" name="safety_device" id="txtOther11" value="<?php echo $data_detail['safety_device'] ?>" autofocus required class="form-control" readonly />
-					<select name = "safety_device_u" id="txtOther"  disabled="disabled"  class="form-control" >
-						<option value=""></option>	
+					<select name = "safety_device" id="txtOther"  disabled="disabled"  class="form-control" >
+						<option value="<?php echo $data_detail['safety_device'] ?>" selected="selected">-- <?php echo $data_detail['safety_device'] ?> --</option>	
 						<option value="DMCR">DMCR (Default)</option>	
 						<option value="DGPT-2">DGPT-2</option>
 						<option value="RIS">RIS</option>
@@ -754,9 +645,8 @@ if (isset($_POST["pasien"]))
 					</select>
 				</div>
 				<div class="col-lg-3">
-					<input type="text" name="temp_indicator" value="<?php echo $data_detail['temp_indicator'] ?>" autofocus required class="form-control" readonly />
-					<select name = "temp_indicator_u" id="txtOther1"  disabled="disabled"  class="form-control" >
-						<option value=""></option>	
+					<select name = "temp_indicator" id="txtOther1"  disabled="disabled"  class="form-control" >
+						<option value="<?php echo $data_detail['temp_indicator'] ?>" selected="selected">-- <?php echo $data_detail['temp_indicator'] ?> --</option>		
 						<option value="C/W Contact">With C/W Contact</option>								
 						<option value="NO Contact">NO Contact</option>
 					</select>								
@@ -772,9 +662,8 @@ if (isset($_POST["pasien"]))
 					</select>
 				</div>
 				<div class="col-lg-3">
-					<input type="text" name="oil_indicator" value="<?php echo $data_detail['oil_indicator'] ?>" autofocus required class="form-control" readonly />
-					<select name = "oil_indicator_u" id="txtOther2"  disabled="disabled"  class="form-control" >
-						<option value=""></option>	
+					<select name = "oil_indicator" id="txtOther2"  disabled="disabled"  class="form-control" >
+						<option value="<?php echo $data_detail['oil_indicator'] ?>" selected="selected">-- <?php echo $data_detail['oil_indicator'] ?> --</option>	
 						<option value="C/W Contact">With C/W Contact</option>								
 						<option value="NO Contact">NO Contact</option>
 					</select>								
@@ -790,9 +679,8 @@ if (isset($_POST["pasien"]))
 					</select>
 				</div>
 				<div class="col-lg-3">
-					<input type="text" name="presure_device" value="<?php echo $data_detail['presure_device'] ?>" autofocus required class="form-control" readonly />
-					<select name = "presure_device_u" id="txtOther3"  disabled="disabled"  class="form-control" >
-						<option value=""></option>	
+					<select name = "presure_device" id="txtOther3"  disabled="disabled"  class="form-control" >
+						<option value="<?php echo $data_detail['presure_device'] ?>" selected="selected">-- <?php echo $data_detail['presure_device'] ?> --</option>	
 						<option value="C/W Contact">With C/W Contact</option>								
 						<option value="NO Contact">NO Contact</option>
 					</select>								
@@ -808,9 +696,8 @@ if (isset($_POST["pasien"]))
 					</select>
 				</div>
 				<div class="col-lg-3">
-					<input type="text" name="winding_indicator" value="<?php echo $data_detail['winding_indicator'] ?>" autofocus required class="form-control" readonly />
-					<select name = "winding_indicator_u" id="txtOther4"  disabled="disabled"  class="form-control" >
-						<option value=""></option>	
+					<select name = "winding_indicator" id="txtOther4"  disabled="disabled"  class="form-control" >
+						<option value="<?php echo $data_detail['winding_indicator'] ?>" selected="selected">-- <?php echo $data_detail['winding_indicator'] ?> --</option>
 						<option value="C/W Contact">With C/W Contact</option>								
 						<option value="NO Contact">NO Contact</option>
 					</select>
@@ -826,9 +713,8 @@ if (isset($_POST["pasien"]))
 					</select>
 				</div>
 				<div class="col-lg-3">
-					<input type="text" name="presure_relay" value="<?php echo $data_detail['presure_relay'] ?>" autofocus required class="form-control" readonly />
-					<select name = "presure_relay_u" id="txtOther5"  disabled="disabled"  class="form-control" >
-						<option value=""></option>	
+					<select name = "presure_relay" id="txtOther5"  disabled="disabled"  class="form-control" >
+						<option value="<?php echo $data_detail['presure_relay'] ?>" selected="selected">-- <?php echo $data_detail['presure_relay'] ?> --</option>	
 						<option value="C/W Contact">With C/W Contact</option>								
 						<option value="NO Contact">NO Contact</option>
 				</select>
@@ -844,9 +730,8 @@ if (isset($_POST["pasien"]))
 					</select>
 				</div>
 				<div class="col-lg-3">
-					<input type="text" name="buccholz_relay" id="txtOther9" value="<?php echo $data_detail['buccholz_relay'] ?>" autofocus required class="form-control" readonly />
-					<select name = "buccholz_relay_u" id="txtOther6"  disabled="disabled"  class="form-control" >
-						<option value=""></option>	
+					<select name = "buccholz_relay" id="txtOther6"  disabled="disabled"  class="form-control" >
+						<option value="<?php echo $data_detail['buccholz_relay'] ?>" selected="selected">-- <?php echo $data_detail['buccholz_relay'] ?> --</option>	
 						<option value="C/W Contact">With C/W Contact</option>								
 						<option value="NO Contact">NO Contact</option>
 					</select>								
@@ -862,9 +747,8 @@ if (isset($_POST["pasien"]))
 					</select>
 				</div>
 				<div class="col-lg-3">
-					<input type="text" name="vacuum_gauge" id="txtOther10" value="<?php echo $data_detail['vacuum_gauge'] ?>" autofocus required class="form-control" readonly />
-					<select name = "vacuum_gauge_u" id="txtOther8"  disabled="disabled"  class="form-control" >
-						<option value=""></option>	
+					<select name = "vacuum_gauge" id="txtOther8"  disabled="disabled"  class="form-control" >
+						<option value="<?php echo $data_detail['vacuum_gauge'] ?>" selected="selected">-- <?php echo $data_detail['vacuum_gauge'] ?> --</option>	
 						<option value="C/W Contact">With C/W Contact</option>								
 						<option value="NO Contact">NO Contact</option>
 					</select>
@@ -880,9 +764,8 @@ if (isset($_POST["pasien"]))
 					</select>
 				</div>
 				<div class="col-lg-3">
-					<input type="text" name="enclosure" value="<?php echo $data_detail['enclosure'] ?>" autofocus required class="form-control" readonly />
-					<select name = "enclosure_u" id="txtOther7"  disabled="disabled"  class="form-control" >
-						<option value=""></option>	
+					<select name = "enclosure" id="txtOther7"  disabled="disabled"  class="form-control" >
+						<option value="<?php echo $data_detail['enclosure'] ?>" selected="selected">-- <?php echo $data_detail['enclosure'] ?> --</option>		
 						<option value="HV+LV CB">HV+LV CB</option>
 						<option value="HV CB">HV CB</option>								
 						<option value="LV CB">LV CB</option>
@@ -900,9 +783,8 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">
 				<label class="control-label col-lg-3">DISSOLVE GASS ANALYSIS (DGA)</label>
 				<div class="col-lg-1">
-					<input type="text" name="sp_dga" value="<?php echo $data_detail['sp_dga'] ?>" autofocus required class="form-control" readonly />
-					<select name="sp_dga_u" class="form-control"  >	
-						<option value=""></option>		
+					<select name="sp_dga" class="form-control"  >	
+						<option value="<?php echo $data_detail['sp_dga'] ?>" selected="selected"><?php echo $data_detail['sp_dga'] ?></option>		
 						<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
@@ -911,9 +793,8 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">
 				<label class="control-label col-lg-3">SWEEP FREQUENCY RESPONSE (SFRA) </label>
 				<div class="col-lg-1">
-					<input type="text" name="sp_sfra" value="<?php echo $data_detail['sp_sfra'] ?>" autofocus required class="form-control" readonly />
-					<select name="sp_sfra_u" class="form-control" >		
-						<option value=""></option>		
+					<select name="sp_sfra" class="form-control" >		
+						<option value="<?php echo $data_detail['sp_sfra'] ?>" selected="selected"><?php echo $data_detail['sp_sfra'] ?> --</option>			
 						<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
@@ -922,9 +803,8 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">
 				<label class="control-label col-lg-3">DISSIPATION FACTOR (TAN DELTA) </label>
 				<div class="col-lg-1">
-					<input type="text" name="sp_delta" value="<?php echo $data_detail['sp_delta'] ?>" autofocus required class="form-control" readonly />
-					<select name="sp_delta_u" class="form-control" >									
-						 <option value=""></option>		
+					<select name="sp_delta" class="form-control" >									
+						<option value="<?php echo $data_detail['sp_delta'] ?>" selected="selected"><?php echo $data_detail['sp_delta'] ?></option>			
 						<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
@@ -933,9 +813,8 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">
 				<label class="control-label col-lg-3">PARTIAL DISCHARGER </label>
 				<div class="col-lg-1">
-					<input type="text" name="sp_pd" value="<?php echo $data_detail['sp_pd'] ?>" autofocus required class="form-control" readonly />
-					<select name="sp_pd_u" class="form-control" >									
-						 <option value=""></option>		
+					<select name="sp_pd" class="form-control" >									
+						<option value="<?php echo $data_detail['sp_pd'] ?>" selected="selected"><?php echo $data_detail['sp_pd'] ?></option>		
 						<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
@@ -944,9 +823,8 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">
 				<label class="control-label col-lg-3">ZERO SEQUENCE IMPEDANCE</label>
 					<div class="col-lg-1">
-						<input type="text" name="sp_zero" value="<?php echo $data_detail['sp_zero'] ?>" autofocus required class="form-control" readonly />
-						<select name="sp_zero_u" class="form-control" >									
-							<option value=""></option>	
+						<select name="sp_zero" class="form-control" >									
+							<option value="<?php echo $data_detail['sp_zero'] ?>" selected="selected"><?php echo $data_detail['sp_zero'] ?></option>	
 							<option value="NO">NO</option>								
 							<option value="YES">YES</option>
 						</select>
@@ -959,9 +837,8 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">
 				<label class="control-label col-lg-3">TEMPERATURE RISE</label>
 				<div class="col-lg-1">
-					<input type="text" name="test_temp_rise" value="<?php echo $data_detail['test_temp_rise'] ?>" autofocus required class="form-control" readonly />
-					<select name="test_temp_rise_u" class="form-control" >	
-				     	<option value=""></option>									
+					<select name="test_temp_rise" class="form-control" >	
+				     	<option value="<?php echo $data_detail['test_temp_rise'] ?>" selected="selected"><?php echo $data_detail['test_temp_rise'] ?></option>									
 						<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
@@ -970,9 +847,8 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">
 				<label class="control-label col-lg-3">LIGHTNING IMPULSE</label>
 				<div class="col-lg-1">
-					<input type="text" name="test_impulse" value="<?php echo $data_detail['test_impulse'] ?>" autofocus required class="form-control" readonly />
-					<select name="test_impulse_u" class="form-control" >
-					    <option value=""></option>																
+					<select name="test_impulse" class="form-control" >
+					    <option value="<?php echo $data_detail['test_impulse'] ?>" selected="selected"><?php echo $data_detail['test_impulse'] ?></option>																
 				 		<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
@@ -981,9 +857,8 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">
 				<label class="control-label col-lg-3">SOUND LEVEL(NOISE) </label>
 				<div class="col-lg-1">
-					<input type="text" name="test_noise" value="<?php echo $data_detail['test_noise'] ?>" autofocus required class="form-control" readonly />
-					<select name="test_noise_u" class="form-control" >	
-				        <option value=""></option>	
+					<select name="test_noise" class="form-control" >	
+				        <option value="<?php echo $data_detail['test_noise'] ?>" selected="selected"><?php echo $data_detail['test_noise'] ?></option>		
 						<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
@@ -997,22 +872,19 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">
 				<label class="control-label col-lg-3">Catatan 1</label>
 				<div class="col-lg-4">
-					<input type="text" name="notes1" value="<?php echo $data_detail['notes1'] ?>" autofocus required class="form-control" readonly />
-					<textarea  id ="notes1" name="notes1_u"  class="form-control" placeholder="Catatan" rows="4" cols="50" ></textarea>
+					<textarea  id ="notes1" name="notes1"  class="form-control" placeholder="Catatan" rows="4" cols="50" ><?php echo $data_detail['notes1'] ?></textarea>
 				</div>	
 			</div>
 			<div class="form-group">
 				<label class="control-label col-lg-3">Catatan 2</label>
 				<div class="col-lg-4">
-					<input type="text" name="notes2" value="<?php echo $data_detail['notes2'] ?>" autofocus required class="form-control" readonly />
-					<textarea  id ="notes2" name="notes2_u" class="form-control" placeholder="Catatan" rows="4" cols="50" ></textarea>
+					<textarea  id ="notes2" name="notes2" class="form-control" placeholder="Catatan" rows="4" cols="50" ><?php echo $data_detail['notes2'] ?></textarea>
 				</div>	
 			</div>
 			<div class="form-group">
 				<label class="control-label col-lg-3">Catatan 3</label>
 				<div class="col-lg-4">
-					<input type="text" name="notes3" value="<?php echo $data_detail['notes3'] ?>" autofocus required class="form-control" readonly />
-					<textarea  id ="notes3" name="notes3_u" class="form-control" placeholder="Catatan" rows="4" cols="50" ></textarea>
+					<textarea  id ="notes3" name="notes3" class="form-control" placeholder="Catatan" rows="4" cols="50" ><?php echo $data_detail['notes3'] ?></textarea>
 				</div>	
 			</div>
 		</div>
@@ -1426,7 +1298,8 @@ var satu = document.getElementById("type_cooling").value;
 		{ var dua = "ONAN";
 		var tiga ="";
 		$('#tigatiga').hide();	
-		$('#rc2').hide();	
+		$('#rc2').hide();
+		$('#dv_kva1').hide();
 		$("#rc2").attr("disabled", "disabled"); 
 		}
 		else if (satu=="KNAN")
@@ -1434,6 +1307,7 @@ var satu = document.getElementById("type_cooling").value;
 		var tiga ="";
 		$('#tigatiga').hide();	
 		$('#rc2').hide();
+		$('#dv_kva1').hide();
 		$("#rc2").attr("disabled", "disabled"); 
 		}
 		else if (satu=="ONAN/ONAF")
@@ -1441,6 +1315,7 @@ var satu = document.getElementById("type_cooling").value;
 		var tiga ="ONAF";
 		$('#tigatiga').show();	
 		$('#rc2').show();
+		$('#dv_kva1').show();
 		$("#rc2").removeAttr("disabled");
 		}
 		
@@ -1449,6 +1324,7 @@ var satu = document.getElementById("type_cooling").value;
 		var tiga ="KNAF";
 		$('#tigatiga').show();	
 		$('#rc2').show();
+		$('#dv_kva1').show();
 		$("#rc2").removeAttr("disabled");
 		}
 		
@@ -1457,6 +1333,7 @@ var satu = document.getElementById("type_cooling").value;
 		var tiga ="KF";
 		$('#tigatiga').show();	
 		$('#rc2').show();
+		$('#dv_kva1').show();
 		$("#rc2").removeAttr("disabled");
 		}
 		
@@ -1465,6 +1342,7 @@ var satu = document.getElementById("type_cooling").value;
 		var tiga ="AF";
 		$('#tigatiga').show();	
 		$('#rc2').show();
+		$('#dv_kva1').show();
 		$("#rc2").removeAttr("disabled");
 		}
 		
