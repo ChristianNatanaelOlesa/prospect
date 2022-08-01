@@ -310,7 +310,7 @@ if (isset($_POST["pasien"]))
 				</div>
 				</div>
 				<div class="container">
-				<h3><font color="brown">ELECTRICAL CHARATERISTIC</font></H3>
+				<h3><font color="brown">ELECTRICAL CHARACTERISTIC</font></H3>
 				<div class="form-group">
 							<label class="control-label col-lg-3"> Insulation System Thermal Class</label>
 								<div class="col-lg-3">

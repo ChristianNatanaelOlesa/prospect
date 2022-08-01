@@ -45,7 +45,7 @@ if (isset($_POST["pasien"]))
 	//ELECTRICAL CHARACTERISTIC
 	$insulation_thermal 	= "Class F (155 C)";
 
-	if ($_POST["kustom_temp_rise"]<>"") {
+	if ($_POST["kustom_temp_rise"] <> "") {
 		$temp_rise = $_POST["kustom_temp_rise"];
 	} else {
 		$temp_rise = "100";								
@@ -97,7 +97,7 @@ if (isset($_POST["pasien"]))
 	$notes2 = $_POST['notes2'];
 	$notes3 = $_POST['notes3'];
 			
-	mysqli_query($GLOBALS["___mysqli_ston"], "insert into oil_prospect set noprospect='$no',service_condition='".$_POST["service_condition"]."',altitude='$altitude',ambient_temp='$ambient_temp',standarisasi='$standarisasi',category='$category',type_trafo='$type_trafo',rate_capacity='".$_POST["rate_capacity"]."',no_phase='$no_phase',frequency='$frequency',primary_voltage='$primary_voltage',secondary_voltage='$secondary_voltage',vektor_group='".$_POST["vektor_group"]."',type_winding='".$_POST["type_winding"]."',temp_rise='$temp_rise',type_cooling='$type_cooling',tap_changer='$tap_changer',no_tap='$no_tap',enclosure='$enclosure',notes1='".$_POST["notes1"]."',dig_thermo='$dig_thermo',cool_fans='$cool_fan',notes2='".$_POST["notes2"]."',notes3='".$_POST["notes3"]."',tipepracost='A',nopracost='$nopracost',tipeprospect='DRY', insulation_thermal='$insulation_thermal',type_cooling1='$type_cooling1',sp_slt='".$_POST["sp_slt"]."',sp_pd='".$_POST["sp_pd"]."',sp_zero='".$_POST["sp_zero"]."',test_temp_rise='".$_POST["test_temp_rise"]."',test_impulse='".$_POST["test_impulse"]."'");
+	mysqli_query($GLOBALS["___mysqli_ston"], "insert into oil_prospect set noprospect='$no',category='$category', type_trafo='$type_trafo', service_condition='$service_condition', altitude='$altitude', ambient_temp='$ambient_temp', standarisasi='$standarisasi', insulation_thermal='$insulation_thermal', temp_rise='$temp_rise', type_cooling='$type_cooling', type_cooling1='$type_cooling1', rate_capacity='$rate_capacity', tap_changer='$tap_changer', no_tap='$no_tap', no_phase='$no_phase', frequency='$frequency', primary_voltage='$primary_voltage', secondary_voltage='$secondary_voltage', vektor_group='$vektor_group', type_winding='$type_winding', dig_thermo='$dig_thermo', enclosure='$enclosure', cool_fans='$cool_fans', sp_slt='$sp_slt',sp_pd='$sp_pd',sp_zero='$sp_zero',test_temp_rise='$test_temp_rise',test_impulse='$test_impulse', notes1='$notes1',notes2='$notes2',notes3='$notes3',tipepracost='A',nopracost='$nopracost',tipeprospect='DRY'");
 			                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            			
 			
 	echo"<script>alert('Data Sukses tersimpan');window.location.href='menu_prospect.php?noprospect=$no '</script>";?>
@@ -219,186 +219,190 @@ if (isset($_POST["pasien"]))
 		</div>
 				
 		<div class="container">	
-		<h3><strong> <font color="blue">GENERAL CONDITION</font></strong></H3>
-				<div class="form-group">
-							<label class="control-label col-lg-3">Catagory</label>
-								<div class="col-lg-4">															
-									<input type="text" name="category" required class="form-control" value="Non Standard" disabled	/>
-								</div>	
-				</div>
-				<div class="form-group">				
-							<label class="control-label col-lg-3">Type of Transformer</label>
-								<div class="col-lg-4">
-								<input type="text" name='type_trafo' id = "type_trafo" required class="form-control" value="Dry Cast Resin" disabled	/>
-								</div>	
-				</div>			
-						
-				<center><div class="form-group">
-							<label class="control-label col-lg-3">Service Condition</label>
-								<div class="col-lg-4">															
-								<select name='service_condition' id = "service_condition" autofocus required class="form-control" >
-								<option value=''></option>
-								<option value='Outdoor'>Outdoor &lt Under Shelter &gt</option>		
-								<option value='Indoor'>Indoor</option>								
-								</select>	
-								</div>	
-				</div>
-				<div class="form-group">
-							<label class="control-label col-lg-3">Altitude</label>
-								<div class="col-lg-3">
-								<input type="text" name='altitude' id = "altitude" required class="form-control" value="Standard &nbsp;&lt&nbsp;1000" disabled	/>
-								</div>								
-				</div>
-				<div class="form-group">
-							<label class="control-label col-lg-3">Ambient Temp</label>	
-							<div class="col-lg-3">
-								<input type="text" name='ambient' id = "ambient" required class="form-control" value="Standard&nbsp;&lt&nbsp;40" disabled	/>
-								</div>	
-								
-				</div>
-				<div class="form-group">
-							<label class="control-label col-lg-3">International Standard</label>	
-							<div class="col-lg-3">
-							<input type="text" name="standarisasi"  disabled class="form-control" value="IEC 60076" disabled />	
-								</div>
-				</div>
-				
-				</div>
-				<div class="container">
-				<h3><font color="brown">ELECTRICAL CHARATERISTIC</font></H3>
-				<div class="form-group">
-							<label class="control-label col-lg-3"> Insulation System Thermal Class</label>
-								<div class="col-lg-3">
-								<input type="text" id="insulation" name="insulation"   disabled class="form-control" value="Class F (155 C)" disabled />
-								</div>
-									
-				</div>
-				<div class="form-group">
-							<label class="control-label col-lg-3">Temperature Rise</label>
-								<div class="col-lg-1">													
-								<input type="text"  id="temp_rise" name="temp_rise" autofocus required class="form-control" readonly value="100" />
-								</div>
-							
-									<div class="col-lg-2">
-									<input type="button" id="topi3" value="Kustom" name = "btnPassport91" class="btn btn-primary" />
-									<input type="button" id="topi4" value="Batal" name = "btnPassport91" class="btn btn-info" />
-									
-								</div>
-								<div class="col-lg-1" id="dvPassport91" style="display: none">	
-									<input type="text"  id="kustom_temp_rise" name="kustom_temp_rise"  autofocus class="form-control" placeholder = "Ubah "/>
-								</div>
-									
-				</div>
-				
-				
-				<div class="form-group">
-							<label class="control-label col-lg-3">Type of Cooling</label>
-								<div class="col-lg-2">
-								<input type="text"  name='type_cooling' id = "type_cooling"  autofocus class="form-control" value= "AN &nbsp;&lt&nbsp; Air Natural &nbsp;&gt;"/>
-								</div>
-				</div>
-				
-				<div class="form-group">
-							<label class="control-label col-lg-3">Rate Capacity</label>
-								<div class="col-lg-2">								
-								<select name="rate_capacity" min="1"  class="form-control" required >
-								<option value='<?php echo $data_detail['rate_capacity'] ?>' selected="selected">-- <?php echo $data_detail['rate_capacity'] ?> --</option>
-								<option value='630'>630</option>		
-								<option value='800'>800</option>
-								<option value='1000'>1000</option>		
-								<option value='1250'>1250</option>
-								<option value='1600'>1600</option>		
-								<option value='2000'>2000</option>
-								<option value='2500'>2500</option>		
-								<option value='3000'>3000</option>
-								<option value='3150'>3150</option>		
-								<option value='3500'>3500</option>
-								<option value='4000'>4000</option>
-								</select>
-								</div>
-								<div class="col-lg-1">								
-								<input type="text"  readonly class="form-control" value="AN" >
-								</div>
-				</div>
-			
-				<div class="form-group">
-							<label class="control-label col-lg-3">Tap Changer</label>
-								<div class="col-lg-2">	
-								<input type="text"  name='tap_changer' id = "tap_changer"  value="Off Load Tap Changer" disabled  class="form-control" />
-								</div>
-				</div>
-				<div class="form-group">
-							<label class="control-label col-lg-3">No Of Tap</label>
-								<div class="col-lg-1">													
-								<input type="number"  name="no_tap" value="5" disabled id="txt_no_tap" autofocus required class="form-control" placeholder="No Of Tap" >
-								</div>
-								 <div class="col-lg-1">
-									<span class="form-control" style="color: RED; background-color: white;"><strong>Taps</strong></span>
-								</div>
-								
-				</div>
-				<div class="form-group">
-							<label class="control-label col-lg-3">No Of Phase</label>
-							<div class="col-lg-1">
-								<input type="text"  name='no_phase' id = "no_phase"  value="3" disabled class="form-control" />
-								</div>	
-								 <div class="col-lg-1">
-									<span class="form-control" style="color: RED; background-color: white;"><strong>Phase</strong></span>
-								</div>
-				</div>
-				<div class="form-group">
-							<label class="control-label col-lg-3">Frequency</label>
-								<div class="col-lg-1">
-								<input type="text"  id="selectBoxon" name="selectBoxon" value="50" disabled class="form-control" />
-								</div> 
-								 <div class="col-lg-1">
-									<span class="form-control" style="color: RED; background-color: white;"><strong>Hz</strong></span>
-								</div>
-								
-				</div>
-				
-				<div class="form-group">
-							<label class="control-label col-lg-3">Primary Voltage</label>
-								<div class="col-lg-1">
-								<input type="text"  name="primary_voltage" value="20000" autofocus required class="form-control" disabled />
-								</div>	
-								 <div class="col-lg-1">
-									<span class="form-control" style="color: RED; background-color: white;"><strong>Volt</strong></span>
-								</div>
-				</div>
-				<div class="form-group">
-							<label class="control-label col-lg-3">Secondary Voltage&nbsp</label>
-								<div class="col-lg-1">
-								<input type="number"  name="secondary_voltage" value="400" disabled autofocus required class="form-control" />
-								</div>	
-								 <div class="col-lg-1">
-									<span class="form-control" style="color: RED; background-color: white;"><strong>Volt</strong></span>
-								</div>
-				</div>
-				<div class="form-group">
-							<label class="control-label col-lg-3">Vektor Group</label>								
-								<div class="col-lg-2">															
-								<select name='vektor_group'  autofocus required class="form-control"  >
-								<option value='<?php echo $data_detail['vektor_group'] ?>' selected="selected">-- <?php echo $data_detail['vektor_group'] ?> --</option>
-								<option value='Dyn-1'>Dyn-1</option>	
-								<option value='Dyn-5'>Dyn-5</option>	
-								<option value='Dyn-7'>Dyn-7</option>	
-								<option value='Dyn-11'>Dyn-11</option>
-								</select>									
-								</div>
-				</div>
-				<div class="form-group">
-							<label class="control-label col-lg-3">Type of Winding</label>
-								<div class="col-lg-2">															
-								<select name='type_winding' id = "type_winding" autofocus required class="form-control"  >
-								<option value='<?php echo $data_detail['type_winding'] ?>' selected="selected">-- <?php echo $data_detail['type_winding'] ?> --</option>
-								<option value='Cu-Cu'>Cu-Cu</option>
-								<option value='Al-Al'>Al-Al</option>
-								</select>
-								</div>
-				</div>
-				
+		<h3><strong> <font color="blue">GENERAL CONDITION</font></strong></h3>
+			<div class="form-group">
+				<label class="control-label col-lg-3">Catagory</label>
+				<div class="col-lg-4">		
+					<strong><input type="text" name="category" required class="form-control" value="Standard" readonly /></strong>
+				</div>	
+			</div>
+
+			<div class="form-group">				
+				<label class="control-label col-lg-3">Type of Transformer</label>
+				<div class="col-lg-4">
+					<strong><input type="text" name="type_trafo" required class="form-control" value="Dry Cast Resin" readonly /></strong>	
+				</div>	
 			</div>	
+
+			<div class="form-group">
+				<label class="control-label col-lg-3">Service Condition</label>
+				<div class="col-lg-4">
+					<select name='service_condition' id = "service_condition" autofocus class="form-control"  >
+						<option value='<?php echo $data_detail['service_condition'] ?>' selected="selected">-- <?php echo $data_detail['service_condition'] ?> --</option>
+						<option value='Outdoor'>Outdoor</option>		
+						<option value='Indoor'>Indoor</option>								
+					</select>	
+				</div>	
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-lg-3">Altitude</label>
+				<div class="col-lg-3">
+					<strong><input type="text" name="altitude" required class="form-control" value="Standard < 1000" readonly /></strong>
+				</div> 							
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-3">Ambient Temp</label>	
+				<div class="col-lg-3">
+					<strong><input type="text" name="ambient_temp" required class="form-control" value="Standard < 40" readonly /></strong>
+				</div> 
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-lg-3">International Standard</label>	
+				<div class="col-lg-3">
+					<strong><input type="text" name="standarisasi" required class="form-control" value="IEC 60076" readonly /></strong>	
+				</div>
+			</div>
+
+		</div>
+
+		<div class="container">
+		<h3><font color="brown">ELECTRICAL CHARATERISTIC</font></h3>
+			<div class="form-group">
+				<label class="control-label col-lg-3"> Insulation System Thermal Class</label>
+				<div class="col-lg-3">
+					<strong><input type="text" name="insulation_thermal" required class="form-control" value="Class F (155 C)" readonly /></strong>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-lg-3">Temperature Rise</label>
+				<div class="col-lg-1">													
+					<strong><input type="text" name="temp_rise" readonly class="form-control" value="100" /></strong>
+				</div>
+				<div class="col-lg-2">
+					<input type="button" id="topi3" value="Kustom" name = "btnPassport91" class="btn btn-primary" />
+					<input type="button" id="topi4" value="Batal" name = "btnPassport91" class="btn btn-info" />
+				</div>
+				<div class="col-lg-1" id="dvPassport91" style="display: none">	
+					<input type="text"  id="kustom_temp_rise" name="kustom_temp_rise"  autofocus class="form-control" placeholder = "Ubah "/>
+				</div>				
+			</div>
+				
+				
+			<div class="form-group">
+				<label class="control-label col-lg-3">Type of Cooling</label>
+				<div class="col-lg-3">															
+					<strong><input type="text" name="type_cooling" required class="form-control" value="AN < Air Natural >" readonly /></strong>
+				</div>
+			</div>
+				
+			<div class="form-group">
+				<label class="control-label col-lg-3">Rate Capacity</label>
+				<div class="col-lg-2">								
+					<select name="rate_capacity" min="1"  class="form-control" required >
+						<option value='<?php echo $data_detail['rate_capacity'] ?>' selected="selected">-- <?php echo $data_detail['rate_capacity'] ?> --</option>
+						<option value='630'>630</option>		
+						<option value='800'>800</option>
+						<option value='1000'>1000</option>		
+						<option value='1250'>1250</option>
+						<option value='1600'>1600</option>		
+						<option value='2000'>2000</option>
+						<option value='2500'>2500</option>		
+						<option value='3000'>3000</option>
+						<option value='3150'>3150</option>		
+						<option value='3500'>3500</option>
+						<option value='4000'>4000</option>
+					</select>
+				</div>
+				<div class="col-lg-1">								
+					<strong><input type="text"  readonly class="form-control" value="AN" ></strong>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="control-label col-lg-3">Tap Changer</label>
+				<div class="col-lg-2">	
+					<strong><input type="text"  name='tap_changer' id = "tap_changer"  value="Off Load Tap Changer" readonly  class="form-control" /></strong>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-lg-3">No Of Tap</label>
+				<div class="col-lg-1">													
+					<strong><input type="number"  name="no_tap" value="5" readonly id="txt_no_tap" autofocus required class="form-control" placeholder="No Of Tap" ></strong>
+				</div>
+				 <div class="col-lg-1">
+					<span class="form-control" style="color: RED; background-color: white;"><strong>Taps</strong></span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-lg-3">No Of Phase</label>
+				<div class="col-lg-1">
+					<strong><input type="text"  name='no_phase' id = "no_phase"  value="3" readonly class="form-control" /></strong>
+				</div>	
+				<div class="col-lg-1">
+					<span class="form-control" style="color: RED; background-color: white;"><strong>Phase</strong></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-3">Frequency</label>
+				<div class="col-lg-1">
+					<strong><input type="text"  id="selectBoxon" name="selectBoxon" value="50" readonly class="form-control" /></strong>
+				</div> 
+				<div class="col-lg-1">
+					<span class="form-control" style="color: RED; background-color: white;"><strong>Hz</strong></span>
+				</div>
+							
+			</div>
+			
+			<div class="form-group">
+				<label class="control-label col-lg-3">Primary Voltage</label>
+				<div class="col-lg-1">
+					<strong><input type="text"  name="primary_voltage" value="20000" autofocus required class="form-control" readonly /></strong>
+				</div>	
+				<div class="col-lg-1">
+					<span class="form-control" style="color: RED; background-color: white;"><strong>Volt</strong></span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-lg-3">Secondary Voltage&nbsp</label>
+				<div class="col-lg-1">
+					<strong><input type="number"  name="secondary_voltage" value="400" disabled autofocus required class="form-control" /></strong>
+				</div>	
+				<div class="col-lg-1">
+					<span class="form-control" style="color: RED; background-color: white;"><strong>Volt</strong></span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-lg-3">Vektor Group</label>								
+				<div class="col-lg-2">															
+					<select name='vektor_group'  autofocus required class="form-control"  >
+						<option value='<?php echo $data_detail['vektor_group'] ?>' selected="selected">-- <?php echo $data_detail['vektor_group'] ?> --</option>
+						<option value='Dyn-1'>Dyn-1</option>	
+						<option value='Dyn-5'>Dyn-5</option>	
+						<option value='Dyn-7'>Dyn-7</option>	
+						<option value='Dyn-11'>Dyn-11</option>
+					</select>									
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-lg-3">Type of Winding</label>
+				<div class="col-lg-2">															
+					<select name='type_winding' id = "type_winding" autofocus required class="form-control"  >
+						<option value='<?php echo $data_detail['type_winding'] ?>' selected="selected">-- <?php echo $data_detail['type_winding'] ?> --</option>
+						<option value='Cu-Cu'>Cu-Cu</option>
+						<option value='Al-Al'>Al-Al</option>
+					</select>
+				</div>
+			</div>
+			
+		</div>	
 			
 		<div class="container">
 		<h3><font color="blue">PROTECTION & ACCESORIES</font></h3>
@@ -412,11 +416,13 @@ if (isset($_POST["pasien"]))
 					</select>
 				</div>
 				<div class="col-lg-3">
+					<strong>
 					<select name = "dig_thermo" id="txtOther5"  disabled="disabled"  class="form-control" >
 						<option value="<?php echo $data_detail['dig_thermo'] ?>" selected="selected">-- <?php echo $data_detail['dig_thermo'] ?> --</option>
 						<option value="C/W Contact">With C/W Contact</option>								
 						<option value="NO Contact">NO Contact</option>
 					</select>
+					</strong>
 				</div>
 			</div>
 
@@ -430,7 +436,7 @@ if (isset($_POST["pasien"]))
 					</select>
 				</div>
 				<div class="col-lg-3">
-					<strong><input type="text" value="<?php echo $data_detail['enclosure'] ?>" autofocus required class="form-control" readonly /></strong>
+					<strong><input type="text" id="txtOther9" value="<?php echo $data_detail['enclosure'] ?>" autofocus required class="form-control" readonly /></strong>
 					<select name = "enclosure_u" id="txtOther7"  disabled="disabled"  class="form-control" >
 					</select>								
 				</div>	
@@ -443,6 +449,7 @@ if (isset($_POST["pasien"]))
 				</div>
 			</div>
 		</div>
+
 		<div class="container">
 		<h3><font color="blue">TRANSFORMER TESTING </font></h3>	
 			<div class="form-group">
@@ -452,33 +459,39 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">
 				<label class="control-label col-lg-3">SOUND LEVEL TEST</label>
 				<div class="col-lg-1">
+					<strong>
 					<select name="sp_slt"  required class="form-control" >	
 						<option value="<?php echo $data_detail['sp_slt'] ?>" selected="selected"><?php echo $data_detail['sp_slt'] ?></option>		
 						<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
+				</strong>
 				</div>							
 			</div>
 				
 			<div class="form-group">
 				<label class="control-label col-lg-3">PARTIAL DISCHARGER </label>
-				<div class="col-lg-1">														
+				<div class="col-lg-1">
+				<strong>														
 					<select name="sp_pd"  required class="form-control" >									
 						<option value="<?php echo $data_detail['sp_pd'] ?>" selected="selected"><?php echo $data_detail['sp_pd'] ?></option>		
 						<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
+				</strong>
 				</div>							
 			</div>	
 
 			<div class="form-group">
 				<label class="control-label col-lg-3">ZERO SEQUENCE IMPEDANCE</label>
-				<div class="col-lg-1">														
+				<div class="col-lg-1">
+				<strong>														
 					<select name="sp_zero"  required class="form-control" >									
 						<option value="<?php echo $data_detail['sp_zero'] ?>" selected="selected"><?php echo $data_detail['sp_zero'] ?></option>	
 						<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
+				</strong>
 				</div>							
 			</div>
 
@@ -487,23 +500,27 @@ if (isset($_POST["pasien"]))
 			</div>			
 			<div class="form-group">
 				<label class="control-label col-lg-3">TEMPERATURE RISE</label>
-				<div class="col-lg-1">														
+				<div class="col-lg-1">
+				<strong>														
 					<select name="test_temp_rise"  required class="form-control" >	
 				     	<option value="<?php echo $data_detail['test_temp_rise'] ?>" selected="selected"><?php echo $data_detail['test_temp_rise'] ?></option>
 						<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
+				</strong>
 				</div>							
 			</div>	
 
 			<div class="form-group">
 				<label class="control-label col-lg-3">LIGHTNING IMPULSE</label>
-				<div class="col-lg-1">														
+				<div class="col-lg-1">
+				<strong>														
 					<select name="test_impulse"  required class="form-control" >
 					    <option value="<?php echo $data_detail['test_impulse'] ?>" selected="selected"><?php echo $data_detail['test_impulse'] ?></option>
 				 		<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
+				</strong>
 				</div>							
 			</div>	
 		</div>
@@ -515,19 +532,19 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">
 				<label class="control-label col-lg-3">Catatan 1</label>
 				<div class="col-lg-4">
-					<textarea  id ="notes1" name="notes1"  class="form-control" placeholder="Catatan" rows="4" cols="50" ><?php echo $data_detail['notes1'] ?></textarea>
+					<strong><textarea  id ="notes1" name="notes1"  class="form-control" placeholder="Catatan" rows="4" cols="50" ><?php echo $data_detail['notes1'] ?></textarea></strong>
 				</div>	
 			</div>
 			<div class="form-group">
 				<label class="control-label col-lg-3">Catatan 2</label>
 				<div class="col-lg-4">
-					<textarea  id ="notes2" name="notes2" class="form-control" placeholder="Catatan" rows="4" cols="50" ><?php echo $data_detail['notes2'] ?></textarea>
+					<strong><textarea  id ="notes2" name="notes2" class="form-control" placeholder="Catatan" rows="4" cols="50" ><?php echo $data_detail['notes2'] ?></textarea></strong>
 				</div>	
 			</div>
 			<div class="form-group">
 				<label class="control-label col-lg-3">Catatan 3</label>
 				<div class="col-lg-4">
-					<textarea  id ="notes3" name="notes3" class="form-control" placeholder="Catatan" rows="4" cols="50" ><?php echo $data_detail['notes3'] ?></textarea>
+					<strong><textarea  id ="notes3" name="notes3" class="form-control" placeholder="Catatan" rows="4" cols="50" ><?php echo $data_detail['notes3'] ?></textarea></strong>
 				</div>	
 			</div>
 		</div>
@@ -733,10 +750,15 @@ $('#textboxess').hide();
             if ($(this).val() == "YES") {
                 $("#txtOther7").removeAttr("disabled");
 				$("#txtOther7").show();
-                $("#txtOther7").focus();
+                $("#txtOther9").removeAttr("disabled");
+				$("#txtOther9").show();
+                $("#txtOther9").focus();
             } else {
                 $("#txtOther7").attr("disabled", "disabled"); 
-				$("#txtOther7").hide(); 				
+				$("#txtOther7").hide();
+			 	$("#txtOther9").attr("disabled", "disabled"); 
+				$("#txtOther9").hide();
+
             }
         });
     });

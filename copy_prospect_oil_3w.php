@@ -496,7 +496,7 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">
 				<label class="control-label col-lg-3">Winding Temperature</label>
 				<div class="col-lg-1">
-					<input type="text"  id="winding_temp"  name="winding_temp" value="<?php echo $data_detail['winding_temp'] ?>" autofocus class="form-control" readonly />
+					<strong><input type="text"  id="winding_temp"  name="winding_temp" value="<?php echo $data_detail['winding_temp'] ?>" autofocus class="form-control" readonly /></strong>
 				</div>
 				<div class="col-lg-1">
 					<span class="form-control" style="color: RED; background-color: white;"><strong>Celcius</strong></span>
@@ -516,7 +516,7 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">
 				<label class="control-label col-lg-3">Oil Temperature</label>
 				<div class="col-lg-1">	
-					<input type="text"  id="oil_temp"  name="oil_temp" value="<?php echo $data_detail['oil_temp'] ?>"  autofocus class="form-control" readonly />
+					<strong><input type="text"  id="oil_temp"  name="oil_temp" value="<?php echo $data_detail['oil_temp'] ?>"  autofocus class="form-control" readonly /></strong>
 				</div>
 				<div class="col-lg-1">
 					<span class="form-control" style="color: RED; background-color: white;"><strong>Celcius</strong></span>
@@ -554,7 +554,7 @@ if (isset($_POST["pasien"]))
 					<input type="number" min="1" name="rate_capacity" value="<?php echo $data_detail['rate_capacity']; ?>" autofocus class="form-control" placeholder="KVA" />
 				</div>
 				<div class="col-lg-1">								
-					<input type="text"  id="duadua" class="form-control" placeholder="KVA" value="<?php echo $data_detail['type_cooling1']; ?>" readonly>
+					<strong><input type="text"  id="duadua" class="form-control" placeholder="KVA" value="<?php echo $data_detail['type_cooling1']; ?>" readonly></strong>
 				</div>
 				<div class="col-lg-1">
 					<span class="form-control" style="color: RED; background-color: white;"><strong>KVA</strong></span>
@@ -573,9 +573,9 @@ if (isset($_POST["pasien"]))
 				</div>
 				<div class="col-lg-1">
 				<?php if ($data_detail['type_cooling'] == 'ONAN/ONAF' || $data_detail['type_cooling'] == 'KNAN/KNAF' || $data_detail['type_cooling'] == 'AFAF' || $data_detail['type_cooling'] == 'OFAF') { ?>							
-					<input type="text"  id="tigatiga" class="form-control" placeholder="KVA" value="<?php echo $data_detail['type_cooling2']; ?>" readonly>
+					<strong><input type="text"  id="tigatiga" class="form-control" placeholder="KVA" value="<?php echo $data_detail['type_cooling2']; ?>" readonly></strong>
 				<?php } else { ?>
-					<input type="text"  id="tigatiga" class="form-control" placeholder="KVA" value="<?php echo $data_detail['type_cooling2']; ?>" style="display: none" readonly>
+					<strong><input type="text"  id="tigatiga" class="form-control" placeholder="KVA" value="<?php echo $data_detail['type_cooling2']; ?>" style="display: none" readonly></strong>
 				<?php } ?>
 				</div>
 				<div class="col-lg-1">
@@ -776,12 +776,14 @@ if (isset($_POST["pasien"]))
 					</select>
 				</div> 
 				<div class="col-lg-3">
+					<strong>
 					<select name = "safety_device" id="txtOther"  disabled="disabled"  class="form-control" >
 						<option value="<?php echo $data_detail['safety_device'] ?>" selected="selected">-- <?php echo $data_detail['safety_device'] ?> --</option>	
 						<option value="DMCR">DMCR (Default)</option>	
 						<option value="DGPT-2">DGPT-2</option>
 						<option value="RIS">RIS</option>
-					</select>								
+					</select>
+					</strong>								
 				</div>							
 			</div>
 			<div class="form-group">
@@ -794,11 +796,13 @@ if (isset($_POST["pasien"]))
 					</select>
 				</div>
 				<div class="col-lg-3">
+					<strong>
 					<select name = "temp_indicator" id="txtOther1"  disabled="disabled"  class="form-control" >
 						<option value="<?php echo $data_detail['temp_indicator'] ?>" selected="selected">-- <?php echo $data_detail['temp_indicator'] ?> --</option>		
 						<option value="C/W Contact">With C/W Contact</option>								
 						<option value="NO Contact">NO Contact</option>
-					</select>								
+					</select>
+					</strong>							
 				</div>		
 			</div>
 			<div class="form-group">
@@ -811,11 +815,13 @@ if (isset($_POST["pasien"]))
 					</select>
 				</div>
 				<div class="col-lg-3">
+					<strong>
 					<select name = "oil_indicator" id="txtOther2"  disabled="disabled"  class="form-control" >
 						<option value="<?php echo $data_detail['oil_indicator'] ?>" selected="selected">-- <?php echo $data_detail['oil_indicator'] ?> --</option>	
 						<option value="C/W Contact">With C/W Contact</option>								
 						<option value="NO Contact">NO Contact</option>
-					</select>								
+					</select>
+					</strong>
 				</div>
 			</div>
 			<div class="form-group">
@@ -828,11 +834,13 @@ if (isset($_POST["pasien"]))
 					</select>
 				</div>
 				<div class="col-lg-3">
+					<strong>
 					<select name = "presure_device" id="txtOther3"  disabled="disabled"  class="form-control" >
 						<option value="<?php echo $data_detail['presure_device'] ?>" selected="selected">-- <?php echo $data_detail['presure_device'] ?> --</option>	
 						<option value="C/W Contact">With C/W Contact</option>								
 						<option value="NO Contact">NO Contact</option>
-					</select>								
+					</select>
+					</strong>								
 				</div>
 			</div>
 			<div class="form-group">
@@ -845,11 +853,13 @@ if (isset($_POST["pasien"]))
 					</select>
 				</div>
 				<div class="col-lg-3">
+					<strong>
 					<select name = "winding_indicator" id="txtOther4"  disabled="disabled"  class="form-control" >
 						<option value="<?php echo $data_detail['winding_indicator'] ?>" selected="selected">-- <?php echo $data_detail['winding_indicator'] ?> --</option>
 						<option value="C/W Contact">With C/W Contact</option>								
 						<option value="NO Contact">NO Contact</option>
 					</select>
+					</strong>
 				</div>
 			</div>
 			<div class="form-group">
@@ -862,11 +872,13 @@ if (isset($_POST["pasien"]))
 					</select>
 				</div>
 				<div class="col-lg-3">
+					<strong>
 					<select name = "presure_relay" id="txtOther5"  disabled="disabled"  class="form-control" >
 						<option value="<?php echo $data_detail['presure_relay'] ?>" selected="selected">-- <?php echo $data_detail['presure_relay'] ?> --</option>	
 						<option value="C/W Contact">With C/W Contact</option>								
 						<option value="NO Contact">NO Contact</option>
-				</select>
+					</select>
+					</strong>
 				</div>
 			</div>
 			<div class="form-group">
@@ -879,11 +891,13 @@ if (isset($_POST["pasien"]))
 					</select>
 				</div>
 				<div class="col-lg-3">
+					<strong>
 					<select name = "buccholz_relay" id="txtOther6"  disabled="disabled"  class="form-control" >
 						<option value="<?php echo $data_detail['buccholz_relay'] ?>" selected="selected">-- <?php echo $data_detail['buccholz_relay'] ?> --</option>	
 						<option value="C/W Contact">With C/W Contact</option>								
 						<option value="NO Contact">NO Contact</option>
-					</select>								
+					</select>
+					</strong>								
 				</div>
 			</div>
 			<div class="form-group">
@@ -896,11 +910,13 @@ if (isset($_POST["pasien"]))
 					</select>
 				</div>
 				<div class="col-lg-3">
+					<strong>
 					<select name = "vacuum_gauge" id="txtOther8"  disabled="disabled"  class="form-control" >
 						<option value="<?php echo $data_detail['vacuum_gauge'] ?>" selected="selected">-- <?php echo $data_detail['vacuum_gauge'] ?> --</option>	
 						<option value="C/W Contact">With C/W Contact</option>								
 						<option value="NO Contact">NO Contact</option>
 					</select>
+					</strong>
 				</div>
 			</div>
 			<div class="form-group">
@@ -913,12 +929,14 @@ if (isset($_POST["pasien"]))
 					</select>
 				</div>
 				<div class="col-lg-3">
+					<strong>
 					<select name = "enclosure" id="txtOther7"  disabled="disabled"  class="form-control" >
 						<option value="<?php echo $data_detail['enclosure'] ?>" selected="selected">-- <?php echo $data_detail['enclosure'] ?> --</option>		
 						<option value="HV+LV CB">HV+LV CB</option>
 						<option value="HV CB">HV CB</option>								
 						<option value="LV CB">LV CB</option>
-					</select>								
+					</select>
+					</strong>
 				</div>	
 			</div>	
 		</div>
@@ -930,55 +948,65 @@ if (isset($_POST["pasien"]))
 			</div>			
 			<div class="form-group">
 				<label class="control-label col-lg-3">DISSOLVE GASS ANALYSIS (DGA)</label>
-				<div class="col-lg-1">														
+				<div class="col-lg-1">
+					<strong>														
 					<select name="sp_dga"  required class="form-control"  >	
 						<option value='<?php echo $data_detail['sp_dga'] ?>' selected="selected"><?php echo $data_detail['sp_dga'] ?></option>			
 						<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
+					</strong>
 				</div>							
 			</div>	
 
 			<div class="form-group">
 				<label class="control-label col-lg-3">SWEEP FREQUENCY RESPONSE (SFRA) </label>
-				<div class="col-lg-1">														
+				<div class="col-lg-1">
+					<strong>														
 					<select name="sp_sfra"  required class="form-control" >		
 						<option value='<?php echo $data_detail['sp_sfra'] ?>' selected="selected"><?php echo $data_detail['sp_sfra'] ?></option>			
 						<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
+					</strong>
 				</div>							
 			</div>	
 			<div class="form-group">
 				<label class="control-label col-lg-3">DISSIPATION FACTOR (TAN DELTA) </label>
-				<div class="col-lg-1">														
+				<div class="col-lg-1">
+					<strong>														
 					<select name="sp_delta"  required class="form-control" >									
 						<option value='<?php echo $data_detail['sp_delta'] ?>' selected="selected"><?php echo $data_detail['sp_delta'] ?></option>			
 						<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
+					</strong>
 				</div>							
 			</div>
 
 			<div class="form-group">
 				<label class="control-label col-lg-3">PARTIAL DISCHARGER </label>
-				<div class="col-lg-1">														
+				<div class="col-lg-1">
+					<strong>														
 					<select name="sp_pd"  required class="form-control" >									
 						<option value='<?php echo $data_detail['sp_pd'] ?>' selected="selected"><?php echo $data_detail['sp_pd'] ?></option>	
 						<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
+					</strong>
 				</div>							
 			</div>	
 
 			<div class="form-group">
 				<label class="control-label col-lg-3">ZERO SEQUENCE IMPEDANCE</label>
-				<div class="col-lg-1">														
+				<div class="col-lg-1">
+					<strong>														
 					<select name="sp_zero"  required class="form-control" >									
 						<option value='<?php echo $data_detail['sp_zero'] ?>' selected="selected"><?php echo $data_detail['sp_zero'] ?></option>		
 						<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
+					</strong>
 				</div>							
 			</div>	
 
@@ -987,34 +1015,40 @@ if (isset($_POST["pasien"]))
 			</div>			
 			<div class="form-group">
 				<label class="control-label col-lg-3">TEMPERATURE RISE</label>
-				<div class="col-lg-1">														
+				<div class="col-lg-1">
+					<strong>														
 					<select name="test_temp_rise"  required class="form-control" >	
 				     	<option value='<?php echo $data_detail['test_temp_rise'] ?>' selected="selected"><?php echo $data_detail['test_temp_rise'] ?></option>										
 						<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
+					</strong>
 				</div>							
 			</div>
 
 			<div class="form-group">
 				<label class="control-label col-lg-3">LIGHTNING IMPULSE</label>
-				<div class="col-lg-1">														
+				<div class="col-lg-1">
+					<strong>														
 					<select name="test_impulse"  required class="form-control" >
 					    <option value='<?php echo $data_detail['test_impulse'] ?>' selected="selected"><?php echo $data_detail['test_impulse'] ?></option>																
 				 		<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
+					</strong>
 				</div>							
 			</div>
 
 			<div class="form-group">
 				<label class="control-label col-lg-3">SOUND LEVEL(NOISE) </label>
-				<div class="col-lg-1">														
+				<div class="col-lg-1">
+					<strong>														
 					<select name="test_noise"  required class="form-control" >	
 				        <option value='<?php echo $data_detail['test_noise'] ?>' selected="selected"><?php echo $data_detail['test_noise'] ?></option>		
 						<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
+					</strong>
 				</div>							
 			</div>	
 		</div>
@@ -1025,19 +1059,19 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">
 				<label class="control-label col-lg-3">Catatan 1</label>
 				<div class="col-lg-4">
-					<textarea  id ="notes1" name="notes1"  class="form-control" placeholder="Catatan" rows="4" cols="50" ><?php echo $data_detail['notes1'] ?></textarea>
+					<strong><textarea  id ="notes1" name="notes1"  class="form-control" placeholder="Catatan" rows="4" cols="50" ><?php echo $data_detail['notes1'] ?></textarea></strong>
 				</div>	
 			</div>
 			<div class="form-group">
 				<label class="control-label col-lg-3">Catatan 2</label>
 				<div class="col-lg-4">
-					<textarea  id ="notes2" name="notes2" class="form-control" placeholder="Catatan" rows="4" cols="50" ><?php echo $data_detail['notes2'] ?></textarea>
+					<strong><textarea  id ="notes2" name="notes2" class="form-control" placeholder="Catatan" rows="4" cols="50" ><?php echo $data_detail['notes2'] ?></textarea></strong>
 				</div>	
 			</div>
 			<div class="form-group">
 				<label class="control-label col-lg-3">Catatan 3</label>
 				<div class="col-lg-4">
-					<textarea  id ="notes3" name="notes3" class="form-control" placeholder="Catatan" rows="4" cols="50" ><?php echo $data_detail['notes3'] ?></textarea>
+					<strong><textarea  id ="notes3" name="notes3" class="form-control" placeholder="Catatan" rows="4" cols="50" ><?php echo $data_detail['notes3'] ?></textarea></strong>
 				</div>	
 			</div>
 		</div>
@@ -1087,7 +1121,7 @@ if (isset($_POST["pasien"]))
 			$('#primary1').hide();
 			$('#primary2').hide();
 			$('#sv').hide();
-			$('#vektor_groups').hide();
+			$('#prima_vektor').hide();
 
 			$("#primary_voltage1").attr("disabled", "disabled");
 			$("#capacity_primary1").attr("disabled", "disabled");

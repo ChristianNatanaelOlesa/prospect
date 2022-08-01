@@ -305,7 +305,7 @@ if (isset($_POST["pasien"]))
 				</div>
 				
 				<div class="container">
-				<h3><font color="brown"><strong>ELECTRICAL CHARATERISTIC</strong></font></H3>
+				<h3><font color="brown"><strong>ELECTRICAL CHARACTERISTIC</strong></font></H3>
 				
 				
 					<div class="form-group">

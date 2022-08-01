@@ -150,15 +150,12 @@ if (isset($_POST["pasien"]))
 			
 		mysqli_query($GLOBALS["___mysqli_ston"], "insert into oil_prospect set noprospect='$no', category='$category', type_trafo='$type_trafo', service_condition='$service_condition', altitude='$altitude', ambient_temp='$ambient_temp', standarisasi='$standarisasi', insulation_thermal='$insulation_thermal', temp_rise='$temp_rise', type_cooling='$type_cooling', type_cooling1='$type_cooling1',type_cooling2='$type_cooling2', rate_capacity='$rate_capacity', rate_capacity2='$rate_capacity2', tap_changer='$tap_changer', no_tap='$no_tap', no_phase='$no_phase', frequency='$frequency', primary_voltage='$primary_voltage', secondary_voltage='$secondary_voltage', vektor_group='$vektor_group', type_winding='$type_winding', dig_thermo='$dig_thermo', enclosure='$enclosure', cool_fans='$cool_fans', sp_slt='$sp_slt',sp_pd='$sp_pd',sp_zero='$sp_zero',test_temp_rise='$test_temp_rise',test_impulse='$test_impulse', notes1='$notes1',notes2='$notes2',notes3='$notes3',tipepracost='A',nopracost='$nopracost',tipeprospect='DRY'");
 			                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-			
-			
-			
 			echo"<script>alert('Data Sukses tersimpan');window.location.href='menu_prospect.php?noprospect=$no '</script>";?>
 
 			
 			<div class="alert alert-success" role="alert">
 				<b>Berhasil menambah user ke database!! </b>
-				</div>
+			</div>
 			<?php
 	}else if(isset($_POST["pasien"])){
 		echo "<center><div class='alert alert-warning alert-dismissable'>
@@ -298,7 +295,7 @@ if (isset($_POST["pasien"]))
 				<div class="col-lg-4">
 					<select name='service_condition' id = "service_condition" autofocus class="form-control"  >
 						<option value='<?php echo $data_detail['service_condition'] ?>' selected="selected">-- <?php echo $data_detail['service_condition'] ?> --</option>
-						<option value='Outdoor'>Outdoor</option>		
+						<option value='Outdoor'>Outdoor &lt Under Shelter &gt</option>		
 						<option value='Indoor'>Indoor</option>								
 					</select>	
 				</div>	
@@ -521,11 +518,13 @@ if (isset($_POST["pasien"]))
 					</select>
 				</div>
 				<div class="col-lg-3">
+					<strong>
 					<select name = "dig_thermo" id="txtOther5"  disabled="disabled"  class="form-control" >
 						<option value="<?php echo $data_detail['dig_thermo'] ?>" selected="selected">-- <?php echo $data_detail['dig_thermo'] ?> --</option>
 						<option value="C/W Contact">With C/W Contact</option>								
 						<option value="NO Contact">NO Contact</option>
 					</select>
+					</strong>
 				</div>
 			</div>
 
@@ -539,7 +538,7 @@ if (isset($_POST["pasien"]))
 					</select>
 				</div>
 				<div class="col-lg-3">
-					<strong><input type="text" value="<?php echo $data_detail['enclosure'] ?>" autofocus required class="form-control" readonly /></strong>
+					<strong><input type="text" id="txtOther10" value="<?php echo $data_detail['enclosure'] ?>" autofocus required class="form-control" readonly /></strong>
 					<select name = "enclosure_u" id="txtOther7"  disabled="disabled"  class="form-control" >
 					</select>								
 				</div>	
@@ -562,33 +561,39 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">
 				<label class="control-label col-lg-3">SOUND LEVEL TEST</label>
 				<div class="col-lg-1">
+					<strong>
 					<select name="sp_slt"  required class="form-control" >	
 						<option value="<?php echo $data_detail['sp_slt'] ?>" selected="selected"><?php echo $data_detail['sp_slt'] ?></option>		
 						<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
+					</strong>
 				</div>							
 			</div>
 				
 			<div class="form-group">
 				<label class="control-label col-lg-3">PARTIAL DISCHARGER </label>
-				<div class="col-lg-1">														
+				<div class="col-lg-1">
+					<strong>
 					<select name="sp_pd"  required class="form-control" >									
 						<option value="<?php echo $data_detail['sp_pd'] ?>" selected="selected"><?php echo $data_detail['sp_pd'] ?></option>		
 						<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
+					</strong>
 				</div>							
 			</div>	
 
 			<div class="form-group">
 				<label class="control-label col-lg-3">ZERO SEQUENCE IMPEDANCE</label>
-				<div class="col-lg-1">														
+				<div class="col-lg-1">
+					<strong>
 					<select name="sp_zero"  required class="form-control" >									
 						<option value="<?php echo $data_detail['sp_zero'] ?>" selected="selected"><?php echo $data_detail['sp_zero'] ?></option>	
 						<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
+					</strong>
 				</div>							
 			</div>
 
@@ -597,23 +602,27 @@ if (isset($_POST["pasien"]))
 			</div>			
 			<div class="form-group">
 				<label class="control-label col-lg-3">TEMPERATURE RISE</label>
-				<div class="col-lg-1">														
+				<div class="col-lg-1">
+					<strong>
 					<select name="test_temp_rise"  required class="form-control" >	
 				     	<option value="<?php echo $data_detail['test_temp_rise'] ?>" selected="selected"><?php echo $data_detail['test_temp_rise'] ?></option>
 						<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
+					</strong>
 				</div>							
 			</div>	
 
 			<div class="form-group">
 				<label class="control-label col-lg-3">LIGHTNING IMPULSE</label>
-				<div class="col-lg-1">														
+				<div class="col-lg-1">
+					<strong>
 					<select name="test_impulse"  required class="form-control" >
 					    <option value="<?php echo $data_detail['test_impulse'] ?>" selected="selected"><?php echo $data_detail['test_impulse'] ?></option>
 				 		<option value="NO">NO</option>								
 						<option value="YES">YES</option>
 					</select>
+					</strong>
 				</div>							
 			</div>	
 		</div>
@@ -625,26 +634,26 @@ if (isset($_POST["pasien"]))
 			<div class="form-group">
 				<label class="control-label col-lg-3">Catatan 1</label>
 				<div class="col-lg-4">
-					<textarea  id ="notes1" name="notes1"  class="form-control" placeholder="Catatan" rows="4" cols="50" ><?php echo $data_detail['notes1'] ?></textarea>
+					<strong><textarea  id ="notes1" name="notes1"  class="form-control" placeholder="Catatan" rows="4" cols="50" ><?php echo $data_detail['notes1'] ?></textarea></strong>
 				</div>	
 			</div>
 			<div class="form-group">
 				<label class="control-label col-lg-3">Catatan 2</label>
 				<div class="col-lg-4">
-					<textarea  id ="notes2" name="notes2" class="form-control" placeholder="Catatan" rows="4" cols="50" ><?php echo $data_detail['notes2'] ?></textarea>
+					<strong><textarea  id ="notes2" name="notes2" class="form-control" placeholder="Catatan" rows="4" cols="50" ><?php echo $data_detail['notes2'] ?></textarea></strong>
 				</div>	
 			</div>
 			<div class="form-group">
 				<label class="control-label col-lg-3">Catatan 3</label>
 				<div class="col-lg-4">
-					<textarea  id ="notes3" name="notes3" class="form-control" placeholder="Catatan" rows="4" cols="50" ><?php echo $data_detail['notes3'] ?></textarea>
+					<strong><textarea  id ="notes3" name="notes3" class="form-control" placeholder="Catatan" rows="4" cols="50" ><?php echo $data_detail['notes3'] ?></textarea></strong>
 				</div>	
 			</div>
 		</div>
 
 		<div class="form-group">
 			<div class="form-actions no-margin-bottom"  style="text-align:center;">
-			<input type="submit" name="pasien" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SIMPAN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" class="btn btn-primary" />   
+				<input type="submit" name="pasien" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SIMPAN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" class="btn btn-primary" />   
 			</div>	
 		</div>
 		<br><br>			
@@ -969,10 +978,14 @@ $('#textboxon').hide();
 				document.getElementById('txtOther7').setAttribute('required','required')
                 $("#txtOther7").removeAttr("disabled");
 				$("#txtOther7").show();
-                $("#txtOther7").focus();
+                $("#txtOther10").removeAttr("disabled");
+				$("#txtOther10").show();
+                $("#txtOther10").focus();
             } else {
                 $("#txtOther7").attr("disabled", "disabled"); 
-				$("#txtOther7").hide(); 				
+				$("#txtOther7").hide();
+				$("#txtOther10").attr("disabled", "disabled"); 
+				$("#txtOther10").hide(); 				
             }
         });
     });

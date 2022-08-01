@@ -211,7 +211,7 @@ if (isset($_POST["pasien"]))
 				<div class="form-group">
 							<label class="control-label col-lg-3">Catagory</label>
 								<div class="col-lg-4">															
-									<input type="text" name="category" required class="form-control" value="Non Standard" disabled	/>
+									<input type="text" name="category" required class="form-control" value="Standard" disabled	/>
 								</div>	
 				</div>
 				<div class="form-group">				
@@ -253,7 +253,7 @@ if (isset($_POST["pasien"]))
 				
 				</div>
 				<div class="container">
-				<h3><font color="brown">ELECTRICAL CHARATERISTIC</font></H3>
+				<h3><font color="brown">ELECTRICAL CHARACTERISTIC</font></H3>
 				<div class="form-group">
 							<label class="control-label col-lg-3"> Insulation System Thermal Class</label>
 								<div class="col-lg-3">
@@ -282,7 +282,7 @@ if (isset($_POST["pasien"]))
 				<div class="form-group">
 							<label class="control-label col-lg-3">Type of Cooling</label>
 								<div class="col-lg-2">
-								<input type="text"  name='type_cooling' id = "type_cooling"  autofocus class="form-control" value= "AN &nbsp;&lt&nbsp; Air Natural &nbsp;&gt;"/>
+								<input type="text"  name='type_cooling' id = "type_cooling"  autofocus class="form-control" value= "AN &nbsp;&lt&nbsp; Air Natural &nbsp;&gt;" readonly />
 								</div>
 				</div>
 				
